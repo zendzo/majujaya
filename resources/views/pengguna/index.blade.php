@@ -7,7 +7,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header">
-              <img style="height: 50px;" src="{{ asset('AdminLTE/dist/img/BNI.png') }}">
+              <h4>{{ $page_title }}</h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -18,6 +18,7 @@
                   <th>Nama Belakang</th>
                   <th>email</th>
                   <th>phone</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,19 @@
                         <td>{{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
+                        <td width="10%" class="text-center">
+                          <a class="btn btn-xs btn-info" href="{{ route('admin.pengguna.show',$user->id) }}">
+                            <span class="fa fa-info fa-fw"></span>
+                          </a>
+                          <a class="btn btn-xs btn-primary" href="{{ route('admin.pengguna.edit',$user->id) }}">
+                            <span class="fa fa-pencil fa-fw"></span>
+                          </a>
+                          <form method="POST" action="{{ route('admin.pengguna.destroy',$user->id) }}" accept-charset="UTF-8" style="display:inline">
+                            <button type="submit" class="btn btn-xs btn-danger">
+                              <span class="fa fa-close fa-fw"></span>
+                            </button>
+                          </form>
+                        </td>
                       </tr>
                     @endforeach
                   @endif
@@ -35,11 +49,9 @@
               </table>
             </div>
             <!-- /.box-body -->
-            @if(is_null(Auth::user()->store->count()))
             <div class="box-footer clearfix">
-              <a class="btn btn-success" href="{{ route('admin.pengguna.create')}}"><span class="fa fa-plus fa-fw"></span>&nbsp;Tambah Baru</a>     
+              <a class="btn btn-success" href="{{ route('admin.pengguna.create')}}"><span class="fa fa-plus fa-fw"></span>&nbsp;Tambah Baru</a>
             </div>
-            @endif
           </div>
         </div>
         <!-- /.col -->

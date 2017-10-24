@@ -34,6 +34,7 @@
       @if(Auth::user()->role_id === 1)
         @include('admin.menu_pembelian')
         @include('admin.menu_penjulan')
+        @include('admin.menu_transaksi')
         @include('admin.menu_pelanggan')
         @include('admin.menu_master_data')
         @include('admin.menu_gudang')

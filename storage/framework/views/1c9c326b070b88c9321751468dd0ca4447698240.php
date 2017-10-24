@@ -5,7 +5,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header">
-              <img style="height: 50px;" src="<?php echo e(asset('AdminLTE/dist/img/BNI.png')); ?>">
+              <h4><?php echo e($page_title); ?></h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -16,6 +16,7 @@
                   <th>Nama Belakang</th>
                   <th>email</th>
                   <th>phone</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,19 @@
                         <td><?php echo e($user->last_name); ?></td>
                         <td><?php echo e($user->email); ?></td>
                         <td><?php echo e($user->phone); ?></td>
+                        <td width="10%" class="text-center">
+                          <a class="btn btn-xs btn-info" href="<?php echo e(route('admin.pengguna.show',$user->id)); ?>">
+                            <span class="fa fa-info fa-fw"></span>
+                          </a>
+                          <a class="btn btn-xs btn-primary" href="<?php echo e(route('admin.pengguna.edit',$user->id)); ?>">
+                            <span class="fa fa-pencil fa-fw"></span>
+                          </a>
+                          <form method="POST" action="<?php echo e(route('admin.pengguna.destroy',$user->id)); ?>" accept-charset="UTF-8" style="display:inline">
+                            <button type="submit" class="btn btn-xs btn-danger">
+                              <span class="fa fa-close fa-fw"></span>
+                            </button>
+                          </form>
+                        </td>
                       </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   <?php endif; ?>
@@ -33,11 +47,9 @@
               </table>
             </div>
             <!-- /.box-body -->
-            <?php if(is_null(Auth::user()->store->count())): ?>
             <div class="box-footer clearfix">
-              <a class="btn btn-success" href="<?php echo e(route('admin.pengguna.create')); ?>"><span class="fa fa-plus fa-fw"></span>&nbsp;Tambah Baru</a>     
+              <a class="btn btn-success" href="<?php echo e(route('admin.pengguna.create')); ?>"><span class="fa fa-plus fa-fw"></span>&nbsp;Tambah Baru</a>
             </div>
-            <?php endif; ?>
           </div>
         </div>
         <!-- /.col -->

@@ -34,6 +34,7 @@
       <?php if(Auth::user()->role_id === 1): ?>
         <?php echo $__env->make('admin.menu_pembelian', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('admin.menu_penjulan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $__env->make('admin.menu_transaksi', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('admin.menu_pelanggan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('admin.menu_master_data', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('admin.menu_gudang', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

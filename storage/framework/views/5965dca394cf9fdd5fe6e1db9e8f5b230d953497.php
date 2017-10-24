@@ -29,6 +29,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <?php echo $__env->yieldContent('cssPlugins'); ?>
+    <style>
+      @media  print {
+      a[href]:after {
+        content: none !important;
+      }
+    }
+    </style>
   </head>
   <body class="skin-blue">
     <div class="wrapper">

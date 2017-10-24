@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CutiController extends Controller
+class ProductTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,9 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $page_title = "Daftar Cuti Pegawai";
+        $page_title = "Daftar Type Products";
 
-        return view('cuti.index',compact('page_title'));
+        return view('product-type.index',compact(['page_title']));
     }
 
     /**
@@ -25,7 +25,9 @@ class CutiController extends Controller
      */
     public function create()
     {
-        //
+        $page_title = "Tambah Type Products";
+
+        return view('product-type.create',compact(['page_title']));
     }
 
     /**
