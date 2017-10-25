@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleTableSeeder::class);
         $this->call(PembelianTypeTableSeeder::class);
         $this->call(PembelianTypeTableSeeder::class);
+        $this->call(TruckTypeTableSeeder::class);
     }
 }

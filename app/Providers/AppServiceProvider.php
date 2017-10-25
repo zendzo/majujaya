@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
 use App\ProductType;
+use App\TruckType;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('product_type', ProductType::all());
+        View::share('truck_type', TruckType::all());
     }
 
     /**

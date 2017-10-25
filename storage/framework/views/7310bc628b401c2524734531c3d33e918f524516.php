@@ -1,37 +1,3 @@
-<?php $__env->startSection('cssPlugins'); ?>
-<link rel="stylesheet" href="<?php echo e(asset('AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css')); ?>">
-<link rel="stylesheet" href="<?php echo e(asset('AdminLTE/plugins/datepicker/datepicker3.css')); ?>">
-<!-- Select2 -->
-  <link rel="stylesheet" href="<?php echo e(asset('AdminLTE/plugins/select2/select2.min.css')); ?>">
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('jsPlugins'); ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="<?php echo e(asset('AdminLTE/plugins/input-mask/jquery.inputmask.js')); ?>"></script>
-<script src="<?php echo e(asset('AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js')); ?>"></script>
-<script src="<?php echo e(asset('AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js')); ?>"></script>
-<script src="<?php echo e(asset('AdminLTE/plugins/datepicker/bootstrap-datepicker.js')); ?>"></script>
-<script src="<?php echo e(asset('AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>
-<!-- Select2 -->
-<script src="<?php echo e(asset('AdminLTE/plugins/select2/select2.full.min.js')); ?>"></script>
-
-<script>
-  $(function(){
-
-    $('#datepicker').datepicker({
-      format: 'mm/dd/yyyy'
-    });
-
-    $('#datepicker2').datepicker({
-      format: 'mm/dd/yyyy'
-    });
-
-    $(".select2").select2();
-
-  });
-</script>
-<?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('content'); ?>
 <div class="row">
   <div class="col-md-12">
@@ -42,8 +8,10 @@
             </div>
             <!-- /.box-header --> 
           <div class="box-body">
-            <form class="form-horizontal"  action="<?php echo e(route('admin.truck.store')); ?>" method="POST">
+            <form class="form-horizontal"  action="<?php echo e(route('admin.truck.update',$truck->id)); ?>" method="POST">
               <?php echo e(csrf_field()); ?>
+
+              <?php echo e(method_field('PATCH')); ?>
 
 
               <div class="form-group<?php echo e($errors->has('truck_type_id') ? ' has-error' : ''); ?>">
@@ -68,7 +36,7 @@
                 <label for="plat" class="col-sm-2 control-label">Plat</label>
 
                 <div class="col-sm-8">
-                  <input id="plat" name="plat" type="text" class="form-control" placeholder="plat" value="<?php echo e(old('plat')); ?>">
+                  <input id="plat" name="plat" type="text" class="form-control" placeholder="plat" value="<?php echo e($truck->plat); ?>">
 
                   <?php if($errors->has('plat')): ?>
                       <span class="help-block">
@@ -82,7 +50,7 @@
                 <label for="tanggal_inspeksi" class="col-sm-2 control-label">Tanggal Inpseksi</label>
 
                 <div class="col-sm-8">
-                  <input id="datepicker" name="tanggal_inspeksi" type="text" class="form-control" placeholder="tanggal_inspeksi" value="<?php echo e(old('tanggal_inspeksi')); ?>">
+                  <input id="datepicker" name="tanggal_inspeksi" type="text" class="form-control" placeholder="tanggal_inspeksi" value="<?php echo e($truck->tanggal_inspeksi->format('d/m/Y')); ?>">
 
                   <?php if($errors->has('tanggal_inspeksi')): ?>
                       <span class="help-block">
@@ -96,7 +64,7 @@
                 <label for="pengemudi" class="col-sm-2 control-label">Pengemudi</label>
 
                 <div class="col-sm-8">
-                  <input id="pengemudi" name="pengemudi" type="text" class="form-control" placeholder="pengemudi" value="<?php echo e(old('pengemudi')); ?>">
+                  <input id="pengemudi" name="pengemudi" type="text" class="form-control" placeholder="pengemudi" value="<?php echo e($truck->pengemudi); ?>">
 
                   <?php if($errors->has('pengemudi')): ?>
                       <span class="help-block">
@@ -127,7 +95,7 @@
                 <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                 <div class="col-sm-8">
-                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="<?php echo e(old('keterangan')); ?>">
+                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="<?php echo e($truck->keterangan); ?>">
 
                   <?php if($errors->has('keterangan')): ?>
                       <span class="help-block">

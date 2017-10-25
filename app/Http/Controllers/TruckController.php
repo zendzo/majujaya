@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTruck;
+use App\Truck;
 
 class TruckController extends Controller
 {
@@ -15,7 +17,9 @@ class TruckController extends Controller
     {
         $page_title = "Daftar Truck";
 
-        return view('truck.index',compact(['page_title']));
+        $data = Truck::paginate(15);
+
+        return view('truck.index',compact(['page_title','data']));
     }
 
     /**
@@ -36,9 +40,20 @@ class TruckController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTruck $request)
     {
-        //
+        $input = $request->all();
+
+        $truck = new Truck;
+
+        $save = $truck->create($input);
+
+        if ($save) {
+            return redirect()->route('admin.truck.index')
+                            ->with('message','Data '.$input['plat'].' Telah Tersimpan')
+                            ->with('status','success')
+                            ->with('type','success');
+        }
     }
 
     /**
@@ -60,7 +75,11 @@ class TruckController extends Controller
      */
     public function edit($id)
     {
-        //
+        $truck = Truck::findOrFail($id);
+
+        $page_title = "Edit Truck ". $truck->plat;
+
+        return view('truck.edit',compact(['truck','page_title']));
     }
 
     /**
@@ -70,9 +89,16 @@ class TruckController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreTruck $request, $id)
     {
-        //
+        $truck = Truck::findOrFail($id);
+
+        $truck->update($request->all());
+
+        return redirect()->route('admin.truck.index')
+                        ->with('message',"Data $truck->plat Telah Diupdate!")
+                        ->with('status','success')
+                        ->with('type','success');
     }
 
     /**

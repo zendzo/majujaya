@@ -128,7 +128,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Kirim</label>
 
                   <div class="col-sm-10">
-                    <input name="masa_tahun" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
+                    <input name="masa_tahun" type="text" class="form-control pull-right" id="datepicker2" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
                   </div>
                 </div>
 
