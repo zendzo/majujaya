@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSupplier;
+use App\Supplier;
 
 class SupplierController extends Controller
 {
@@ -15,7 +17,9 @@ class SupplierController extends Controller
     {
         $page_title = "Daftar Supplier";
 
-        return view('supplier.index',compact(['page_title']));
+        $data = Supplier::paginate(25);
+
+        return view('supplier.index',compact(['page_title','data']));
     }
 
     /**
@@ -36,9 +40,18 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSupplier $request)
     {
-        //
+        $input = $request->all();
+
+        $supplier = new Supplier;
+
+        $supplier->create($input);
+
+        return redirect()->route('admin.supplier.index')
+                    ->with('message','Data Telah Tersimpan!')
+                    ->with('type','success')
+                    ->with('status','success');
     }
 
     /**
@@ -60,7 +73,11 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+
+        $page_title = "Edit Supplier ". $supplier->nama;
+
+        return view('supplier.edit',compact(['supplier','page_title']));
     }
 
     /**
@@ -70,9 +87,18 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreSupplier $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $supplier = Supplier::findOrFail($id);
+
+        $supplier->update($input);
+
+        return redirect()->route('admin.supplier.index')
+                    ->with('message','Data Telah Terupdate!')
+                    ->with('type','success')
+                    ->with('status','success');
     }
 
     /**
@@ -83,6 +109,11 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Supplier::findOrFail($id)->delete();
+
+        return redirect()->route('admin.supplier.index')
+                    ->with('message','Data Telah Terhapus!')
+                    ->with('type','success')
+                    ->with('status','success');
     }
 }

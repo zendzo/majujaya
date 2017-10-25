@@ -17,6 +17,6 @@
 		</ul>
 		</li>
     <li><a href="<?php echo e(route('admin.warehouse.index')); ?>"><i class="fa fa-hospital-o"></i>Gudang</a></li>
-    <li><a href="#"><i class="fa fa-truck fa-flip-horizontal fa-fw"></i>Truck</a></li>
+    <li><a href="<?php echo e(route('admin.truck.index')); ?>"><i class="fa fa-truck fa-flip-horizontal fa-fw"></i>Truck</a></li>
   </ul>
 </li>

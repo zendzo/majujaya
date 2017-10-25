@@ -21,5 +21,7 @@ class RoleTableSeeder extends Seeder
 
         $user->name = 'User';
         $user->save();
+
+        $this->command->info('User Roles Created !');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreatePenyediasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('penyedias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_type_id');
             $table->string('nama');
-            $table->string('kode');
-            $table->string('deskripsi');
+            $table->string('alamat');
+            $table->string('phone',20);
+            $table->string('npwp');
             $table->boolean('status')->default(true);
-            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('penyedias');
     }
 }

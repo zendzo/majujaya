@@ -72,7 +72,18 @@ class PenggunaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $page_title = "Edit User" .$user->fullName();
+
+        if (empty($user)) {
+            return redirect()->back()
+                    ->with('message', 'Data Tidak Ditemukan!')
+                    ->with('status','error')
+                    ->with('type','error');
+        }
+
+        return view('pengguna.edit',compact(['page_title','user']));
     }
 
     /**
@@ -84,7 +95,16 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $user = User::findOrFail($id);
+
+        $user->update($input);
+
+        return redirect()->route('admin.pengguna.index')
+                        ->with('message', 'Data Telah Tersimpan!')
+                        ->with('status','success')
+                        ->with('type','success');
     }
 
     /**

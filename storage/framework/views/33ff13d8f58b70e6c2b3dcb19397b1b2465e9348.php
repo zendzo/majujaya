@@ -14,7 +14,8 @@
                 <thead>
                 <tr>
                 	<td>Nama</td>
-                	<td>Alamat</td>
+                  <td>Alamat</td>
+                	<td>Phone</td>
                 	<td>NPWP ID</td>
                 	<td>Status</td>
                 	<td>Keterangan</td>
@@ -22,24 +23,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                	<td></td>
-                	<td></td>
-                	<td></td>
-                	<td></td>
-                	<td></td>
-                	<td width="10%" class="text-center">
-                      <a class="btn btn-xs btn-info" href="#">
+                	<?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <td><?php echo e($item->nama); ?></td>
+                    <td><?php echo e($item->alamat); ?></td>
+                    <td><?php echo e($item->phone); ?></td>
+                    <td><?php echo e($item->npwp); ?></td>
+                    <td><?php echo e($item->status); ?></td>
+                    <td><?php echo e($item->keterangan); ?></td>
+
+                    <!-- button action -->
+                    <td width="10%" class="text-center">
+                      <a class="btn btn-xs btn-info" href="<?php echo e(route('admin.supplier.show',$item->id)); ?>">
                         <span class="fa fa-info fa-fw"></span>
                       </a>
-                      <a class="btn btn-xs btn-primary" href="#}">
+                      <a class="btn btn-xs btn-primary" href="<?php echo e(route('admin.supplier.edit',$item->id)); ?>">
                         <span class="fa fa-pencil fa-fw"></span>
                       </a>
-                      <form method="POST" action="#" accept-charset="UTF-8" style="display:inline">
+                      <form method="POST" action="<?php echo e(route('admin.supplier.destroy',$item->id)); ?>" accept-charset="UTF-8" style="display:inline">
+                        <?php echo e(method_field('DELETE')); ?>
+
+                        <?php echo e(csrf_field()); ?>
+
                         <button type="submit" class="btn btn-xs btn-danger">
                           <span class="fa fa-close fa-fw"></span>
                         </button>
                       </form>
                     </td>
+
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
               </table>
             </div>

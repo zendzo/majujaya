@@ -16,47 +16,38 @@
                 <thead>
                 <tr>
                 	<td>Nama</td>
-                  <td>Alamat</td>
-                	<td>Phone</td>
-                	<td>NPWP ID</td>
-                	<td>Status</td>
+                	<td>Alamat</td>
+                  	<td>Status</td>
                 	<td>Keterangan</td>
                 	<td>Action</td>
                 </tr>
                 </thead>
                 <tbody>
-                	@foreach($data as $item)
-                    <td>{{ $item->nama }}</td>
-                    <td>{{ $item->alamat }}</td>
-                    <td>{{ $item->phone }}</td>
-                    <td>{{ $item->npwp}}</td>
-                    <td>{{ $item->status }}</td>
-                    <td>{{ $item->keterangan }}</td>
-
-                    <!-- button action -->
-                    <td width="10%" class="text-center">
-                      <a class="btn btn-xs btn-info" href="{{ route('admin.supplier.show',$item->id) }}">
+                	<td></td>
+                	<td></td>
+                	<td></td>
+                	<td></td>
+                	<td width="10%" class="text-center">
+                      <a class="btn btn-xs btn-info" href="#">
                         <span class="fa fa-info fa-fw"></span>
                       </a>
-                      <a class="btn btn-xs btn-primary" href="{{ route('admin.supplier.edit',$item->id) }}">
+                      <a class="btn btn-xs btn-primary" href="#}">
                         <span class="fa fa-pencil fa-fw"></span>
                       </a>
-                      <form method="POST" action="{{ route('admin.supplier.destroy',$item->id) }}" accept-charset="UTF-8" style="display:inline">
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
+                      <form method="POST" action="#" accept-charset="UTF-8" style="display:inline">
                         <button type="submit" class="btn btn-xs btn-danger">
                           <span class="fa fa-close fa-fw"></span>
                         </button>
                       </form>
                     </td>
-
-                  @endforeach
                 </tbody>
               </table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <a class="btn btn-success" href="{{ route('admin.supplier.create')}}"><span class="fa fa-plus fa-fw"></span>&nbsp;Tambah Baru</a>
+              <a class="btn btn-success" href="{{ route('admin.truck.create')}}">
+              	<span class="fa fa-plus fa-fw"></span>Tambah Baru
+              </a>
             </div>
           </div>
         </div>

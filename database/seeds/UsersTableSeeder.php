@@ -18,13 +18,16 @@ class UsersTableSeeder extends Seeder
         $user = new User;
 
         for ($i=0; $i < 1; $i++) { 
-        	$user->first_name = 'admin';
-	        $user->last_name = 'system';
-	        $user->email = 'admin@cutionline.com';
+        	$user->first_name = 'Administrator';
+	        $user->last_name = 'System';
+            $user->email = 'admin@majujaya.com';
+	        $user->phone = 'phone';
 	        $user->password = 'adminadmin';
 	        $user->role_id = 1;
 	        $user->save();
         }
+
+        $this->command->info('Administrator User Created !');
 
     }
 }

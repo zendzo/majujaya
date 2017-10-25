@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WarehouseController extends Controller
+class TruckController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,9 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        $page_title = "Daftar Gudang";
+        $page_title = "Daftar Truck";
 
-        return view('warehouse.index',compact(['page_title']));
+        return view('truck.index',compact(['page_title']));
     }
 
     /**
@@ -27,7 +27,7 @@ class WarehouseController extends Controller
     {
         $page_title = "Tambah Daftar Truck";
 
-        return view('warehouse.create',compact(['page_title']));
+        return view('truck.create',compact(['page_title']));
     }
 
     /**

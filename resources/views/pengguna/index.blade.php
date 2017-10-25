@@ -36,11 +36,15 @@
                           <a class="btn btn-xs btn-primary" href="{{ route('admin.pengguna.edit',$user->id) }}">
                             <span class="fa fa-pencil fa-fw"></span>
                           </a>
-                          <form method="POST" action="{{ route('admin.pengguna.destroy',$user->id) }}" accept-charset="UTF-8" style="display:inline">
+                          @if($user->id !== 1)
+                            <form method="POST" action="{{ route('admin.pengguna.destroy',$user->id) }}" accept-charset="UTF-8" style="display:inline">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
                             <button type="submit" class="btn btn-xs btn-danger">
                               <span class="fa fa-close fa-fw"></span>
                             </button>
                           </form>
+                          @endif
                         </td>
                       </tr>
                     @endforeach

@@ -34,11 +34,17 @@
                           <a class="btn btn-xs btn-primary" href="<?php echo e(route('admin.pengguna.edit',$user->id)); ?>">
                             <span class="fa fa-pencil fa-fw"></span>
                           </a>
-                          <form method="POST" action="<?php echo e(route('admin.pengguna.destroy',$user->id)); ?>" accept-charset="UTF-8" style="display:inline">
+                          <?php if($user->id !== 1): ?>
+                            <form method="POST" action="<?php echo e(route('admin.pengguna.destroy',$user->id)); ?>" accept-charset="UTF-8" style="display:inline">
+                            <?php echo e(method_field('DELETE')); ?>
+
+                            <?php echo e(csrf_field()); ?>
+
                             <button type="submit" class="btn btn-xs btn-danger">
                               <span class="fa fa-close fa-fw"></span>
                             </button>
                           </form>
+                          <?php endif; ?>
                         </td>
                       </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

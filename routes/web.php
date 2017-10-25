@@ -24,6 +24,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 
 	Route::resource('warehouse','WarehouseController');
 
+	Route::resource('truck','TruckController');
+
 	Route::get('pembayaran-pembelian',[
 		'as'	=>	'pembayaran.pembelian',
 		'uses'	=>	'PembelianController@pembayaranPembelian'

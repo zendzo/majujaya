@@ -8,15 +8,17 @@
             </div>
             <!-- /.box-header --> 
           <div class="box-body">
-            <form class="form-horizontal"  action="<?php echo e(route('admin.supplier.store')); ?>" method="POST">
+            <form class="form-horizontal"  action="<?php echo e(route('admin.supplier.update',$supplier->id)); ?>" method="POST">
               <?php echo e(csrf_field()); ?>
+
+              <?php echo e(method_field('PATCH')); ?>
 
 
               <div class="form-group<?php echo e($errors->has('nama') ? ' has-error' : ''); ?>">
                 <label for="nama" class="col-sm-2 control-label">Nama</label>
 
                 <div class="col-sm-8">
-                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="<?php echo e(old('nama')); ?>">
+                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="<?php echo e($supplier->nama); ?>">
 
                   <?php if($errors->has('nama')): ?>
                       <span class="help-block">
@@ -30,7 +32,7 @@
                 <label for="alamat" class="col-sm-2 control-label">Alamat</label>
 
                 <div class="col-sm-8">
-                  <textarea class="form-control" name="alamat" value="<?php echo e(old('alamat')); ?>" placeholder="Alamat"></textarea>
+                  <textarea class="form-control" name="alamat" placeholder="Alamat"> <?php echo e($supplier->alamat); ?> </textarea>
 
                   <?php if($errors->has('alamat')): ?>
                       <span class="help-block">
@@ -44,7 +46,7 @@
                 <label for="phone" class="col-sm-2 control-label">Phone</label>
 
                 <div class="col-sm-8">
-                  <input id="phone" name="phone" type="text" class="form-control" placeholder="Phone" value="<?php echo e(old('phone')); ?>">
+                  <input id="phone" name="phone" type="text" class="form-control" placeholder="Phone" value="<?php echo e($supplier->phone); ?>">
 
                   <?php if($errors->has('phone')): ?>
                       <span class="help-block">
@@ -58,7 +60,7 @@
                 <label for="npwp" class="col-sm-2 control-label">NPWP</label>
 
                 <div class="col-sm-8">
-                  <input id="npwp" name="npwp" type="text" class="form-control" placeholder="NPWP" value="<?php echo e(old('npwp')); ?>">
+                  <input id="npwp" name="npwp" type="text" class="form-control" placeholder="NPWP" value="<?php echo e($supplier->npwp); ?>">
 
                   <?php if($errors->has('npwp')): ?>
                       <span class="help-block">
@@ -89,7 +91,7 @@
                 <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                 <div class="col-sm-8">
-                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="<?php echo e(old('keterangan')); ?>">
+                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="<?php echo e($supplier->keterangan); ?>">
 
                   <?php if($errors->has('keterangan')): ?>
                       <span class="help-block">
