@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <div class="login-box">
   <div class="login-logo">
-    <a href="/"><b>CUTI</b>Online</a>
+    <a href="/"><?php echo e(config('app.name')); ?></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

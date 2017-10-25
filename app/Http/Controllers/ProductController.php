@@ -112,6 +112,15 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $delete = $product->delete();
+
+        if ($delete) {
+            return redirect()->route('admin.product.index')
+                        ->with('message',"Data $product->nama Telah Dihapus!")
+                        ->with('status','success')
+                        ->with('type','success');
+        }
     }
 }

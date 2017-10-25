@@ -109,6 +109,11 @@ class TruckController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Truck::findOrFail($id)->delete();
+
+        return redirect()->route('admin.truck.index')
+                    ->with('message',"Data Telah Dihapus!")
+                    ->with('status','success')
+                    ->with('type','success');
     }
 }

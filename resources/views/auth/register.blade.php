@@ -21,7 +21,7 @@
 @section('content')
 <div class="register-box">
   <div class="register-logo">
-    <a href="/"><b>CUTI</b>Online</a>
+    <a href="/">{{ config('app.name') }}</a>
   </div>
 
   <div class="register-box-body">
