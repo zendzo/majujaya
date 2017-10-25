@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductType;
+use App\ProductType;
 
 class ProductTypeController extends Controller
 {
@@ -15,7 +17,9 @@ class ProductTypeController extends Controller
     {
         $page_title = "Daftar Type Products";
 
-        return view('product-type.index',compact(['page_title']));
+        $data = ProductType::paginate(25);
+
+        return view('product-type.index',compact(['page_title','data']));
     }
 
     /**
@@ -36,9 +40,20 @@ class ProductTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductType $request)
     {
-        //
+        $input = $request->all();
+
+        $ProductType = new ProductType;
+
+        $save = $ProductType->create($input);
+
+        if ($save) {
+            return redirect()->route('admin.product-type.index')
+                            ->with('message','Data '.$input['nama'].' Telah Tersimpan')
+                            ->with('status','success')
+                            ->with('type','success');
+        }
     }
 
     /**

@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box box-info">
-            <div class="box-header">
+            <div class="box-header with-border">
               <h4><?php echo e($page_title); ?></h4>
             </div>
             <!-- /.box-header -->

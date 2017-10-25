@@ -6,9 +6,8 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box box-info">
-            <div class="box-header">
+            <div class="box-header with-border">
               <h4>{{ $page_title }}</h4>
-              <hr>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -26,29 +25,31 @@
                 </thead>
                 <tbody>
                 	@foreach($data as $item)
-                    <td>{{ $item->nama }}</td>
-                    <td>{{ $item->alamat }}</td>
-                    <td>{{ $item->phone }}</td>
-                    <td>{{ $item->npwp}}</td>
-                    <td>{{ $item->status }}</td>
-                    <td>{{ $item->keterangan }}</td>
+                    <tr>
+                      <td>{{ $item->nama }}</td>
+                      <td>{{ $item->alamat }}</td>
+                      <td>{{ $item->phone }}</td>
+                      <td>{{ $item->npwp}}</td>
+                      <td>{{ $item->status }}</td>
+                      <td>{{ $item->keterangan }}</td>
 
-                    <!-- button action -->
-                    <td width="10%" class="text-center">
-                      <a class="btn btn-xs btn-info" href="{{ route('admin.supplier.show',$item->id) }}">
-                        <span class="fa fa-info fa-fw"></span>
-                      </a>
-                      <a class="btn btn-xs btn-primary" href="{{ route('admin.supplier.edit',$item->id) }}">
-                        <span class="fa fa-pencil fa-fw"></span>
-                      </a>
-                      <form method="POST" action="{{ route('admin.supplier.destroy',$item->id) }}" accept-charset="UTF-8" style="display:inline">
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn btn-xs btn-danger">
-                          <span class="fa fa-close fa-fw"></span>
-                        </button>
-                      </form>
-                    </td>
+                      <!-- button action -->
+                      <td width="10%" class="text-center">
+                        <a class="btn btn-xs btn-info" href="{{ route('admin.supplier.show',$item->id) }}">
+                          <span class="fa fa-info fa-fw"></span>
+                        </a>
+                        <a class="btn btn-xs btn-primary" href="{{ route('admin.supplier.edit',$item->id) }}">
+                          <span class="fa fa-pencil fa-fw"></span>
+                        </a>
+                        <form method="POST" action="{{ route('admin.supplier.destroy',$item->id) }}" accept-charset="UTF-8" style="display:inline">
+                          {{ method_field('DELETE') }}
+                          {{ csrf_field() }}
+                          <button type="submit" class="btn btn-xs btn-danger">
+                            <span class="fa fa-close fa-fw"></span>
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
 
                   @endforeach
                 </tbody>

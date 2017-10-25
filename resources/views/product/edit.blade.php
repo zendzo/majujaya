@@ -10,14 +10,15 @@
             </div>
             <!-- /.box-header --> 
           <div class="box-body">
-            <form class="form-horizontal"  action="{{ route('admin.product-type.store') }}" method="POST">
+            <form class="form-horizontal"  action="{{ route('admin.product.update',$product->id) }}" method="POST">
               {{ csrf_field() }}
+              {{ method_field('PATCH') }}
 
               <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                 <label for="nama" class="col-sm-2 control-label">Nama</label>
 
                 <div class="col-sm-8">
-                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="{{ old('nama') }}">
+                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="{{ $product->nama }}">
 
                   @if ($errors->has('nama'))
                       <span class="help-block">
@@ -27,11 +28,29 @@
                 </div>
               </div>
 
+              <div class="form-group{{ $errors->has('product_type_id') ? ' has-error' : '' }}">
+                <label for="product_type_id" class="col-sm-2 control-label">Tipe Product</label>
+
+                <div class="col-sm-8">
+                 <select class="form-control" name="product_type_id">
+                 	@foreach( $product_type as $item )
+                 		<option value="{{$item->id}}">{{$item->nama}}</option>
+                 	@endforeach
+                  </select>
+
+                  @if ($errors->has('product_type_id'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('product_type_id') }}</strong>
+                      </span>
+                  @endif
+                </div>
+              </div>
+
               <div class="form-group{{ $errors->has('kode') ? ' has-error' : '' }}">
                 <label for="kode" class="col-sm-2 control-label">Kode</label>
 
                 <div class="col-sm-8">
-                  <input id="kode" name="kode" type="text" class="form-control" placeholder="kode" value="{{ old('kode') }}">
+                  <input id="kode" name="kode" type="text" class="form-control" value="{{ $product->kode }}" placeholder="kode">
 
                   @if ($errors->has('kode'))
                       <span class="help-block">
@@ -45,7 +64,7 @@
                 <label for="deskripsi" class="col-sm-2 control-label">Deskripsi</label>
 
                 <div class="col-sm-8">
-                  <textarea class="form-control" name="deskripsi" value="{{ old('deskripsi') }}" placeholder="Deskripsi"></textarea>
+                  <textarea class="form-control" name="deskripsi" placeholder="Deskripsi">{{ $product->deskripsi }}</textarea>
 
                   @if ($errors->has('deskripsi'))
                       <span class="help-block">

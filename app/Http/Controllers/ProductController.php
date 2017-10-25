@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProduct;
+use App\ProductType;
+use App\Product;
 
 class ProductController extends Controller
 {
@@ -15,7 +18,9 @@ class ProductController extends Controller
     {
         $page_title = "Daftar Products";
 
-        return view('product.index',compact(['page_title']));
+        $data = Product::paginate(15);
+
+        return view('product.index',compact(['page_title','data']));
     }
 
     /**
@@ -36,9 +41,22 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
-        //
+        $input = $request->all();
+
+        $product = new Product;
+
+        $save = $product->create($input);
+
+        if ($save) {
+            return redirect()->route('admin.product.index')
+                            ->with('message','Data '.$input['nama'].' Telah Tersimpan')
+                            ->with('status','success')
+                            ->with('type','success');
+        }
+
+        // return $input;
     }
 
     /**
@@ -60,7 +78,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $page_title = "Edit Product ". $product->nama;
+
+        return view('product.edit',compact(['product','page_title']));
     }
 
     /**
@@ -70,9 +92,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProduct $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->update($request->all());
+
+        return redirect()->route('admin.product.index')
+                        ->with('message',"Data $product->nama Telah Diupdate!")
+                        ->with('status','success')
+                        ->with('type','success');
     }
 
     /**
