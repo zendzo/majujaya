@@ -1,4 +1,4 @@
-<li class="treeview">
+<li class="treeview {{ active(['admin.pembelian.*','admin.pembayaran.pembelian']) }}">
 <a href="#">
   <i class="fa fa-truck fa-fw" aria-hidden="true"></i>
     <span>PEMBELIAN</span>

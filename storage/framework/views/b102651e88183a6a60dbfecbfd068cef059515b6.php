@@ -1,5 +1,5 @@
 <li class="treeview">
-    <a href="#"><i class="fa fa-hospital-o"></i><span>Gudang</span>
+    <a href="#"><i class="fa fa-hospital-o" ></i><span>Gudang</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>

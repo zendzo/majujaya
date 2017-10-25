@@ -1,4 +1,4 @@
-<li class="treeview">
+<li class="treeview <?php echo e(active(['admin.pengguna.*','admin.product.*','admin.product-type.*','admin.supplier.*','admin.warehouse.*','admin.truck.*'])); ?>">
 <a href="#">
   <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>
     <span>MASTER DATA</span>
@@ -7,7 +7,7 @@
   <ul class="treeview-menu">
     <li><a href="<?php echo e(route('admin.pengguna.index')); ?>"><i class="fa fa-user fa-fw"></i>Pelanggan (Pengguna)</a></li>
     <li><a href="<?php echo e(route('admin.supplier.index')); ?>"><i class="fa fa-building-o fa-fw"></i>Supplier</a></li>
-		<li class="treeview ">
+		<li class="treeview <?php echo e(active(['admin.product.*','admin.product-type.*'])); ?>">
 			<a href="#">
 				<i class="fa fa-cubes fa-fw"></i>&nbsp;Produk<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 			</a>

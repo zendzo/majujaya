@@ -10,14 +10,15 @@
             </div>
             <!-- /.box-header --> 
           <div class="box-body">
-            <form class="form-horizontal"  action="{{ route('admin.warehouse.store') }}" method="POST">
+            <form class="form-horizontal"  action="{{ route('admin.warehouse.update',$gudang->id) }}" method="POST">
               {{ csrf_field() }}
+              {{ method_field('PATCH') }}
 
               <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                 <label for="nama" class="col-sm-2 control-label">Nama</label>
 
                 <div class="col-sm-8">
-                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="{{ old('nama') }}">
+                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="{{ $gudang->nama}}">
 
                   @if ($errors->has('nama'))
                       <span class="help-block">
@@ -31,7 +32,7 @@
                 <label for="alamat" class="col-sm-2 control-label">Alamat</label>
 
                 <div class="col-sm-8">
-                  <textarea class="form-control" name="alamat" value="{{ old('alamat') }}" placeholder="Alamat"></textarea>
+                  <textarea class="form-control" name="alamat" placeholder="Alamat"> {{ $gudang->alamat }} </textarea>
 
                   @if ($errors->has('alamat'))
                       <span class="help-block">
@@ -45,7 +46,7 @@
                 <label for="phone" class="col-sm-2 control-label">Phone</label>
 
                 <div class="col-sm-8">
-                  <input id="phone" name="phone" type="text" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
+                  <input id="phone" name="phone" type="text" class="form-control" placeholder="Phone" value="{{ $gudang->phone }}">
 
                   @if ($errors->has('phone'))
                       <span class="help-block">
@@ -76,7 +77,7 @@
                 <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                 <div class="col-sm-8">
-                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="{{ old('keterangan') }}">
+                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="{{ $gudang->keterangan }}">
 
                   @if ($errors->has('keterangan'))
                       <span class="help-block">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Gudang;
 
 class WarehouseController extends Controller
 {
@@ -15,7 +16,9 @@ class WarehouseController extends Controller
     {
         $page_title = "Daftar Gudang";
 
-        return view('warehouse.index',compact(['page_title']));
+        $data = Gudang::paginate(25);
+
+        return view('warehouse.index',compact(['page_title','data']));
     }
 
     /**
@@ -38,7 +41,16 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $gudang = new Gudang;
+
+        $gudang->create($input);
+
+        return redirect()->route('admin.warehouse.index')
+                    ->with('message','Data Telah Tersimpan!')
+                    ->with('type','success')
+                    ->with('status','success');
     }
 
     /**
@@ -60,7 +72,11 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gudang = Gudang::findOrFail($id);
+
+        $page_title = "Edit Gudang ". $gudang->nama;
+
+        return view('warehouse.edit',compact(['gudang','page_title']));
     }
 
     /**
@@ -72,7 +88,16 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $gudang = Gudang::findOrFail($id);
+
+        $gudang->update($input);
+
+        return redirect()->route('admin.warehouse.index')
+                    ->with('message',"Data $gudang->nama Telah Diupdate")
+                    ->with('type','success')
+                    ->with('status','success');
     }
 
     /**
@@ -83,6 +108,11 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Gudang::findOrFail($id)->delete();
+
+        return redirect()->route('admin.warehouse.index')
+                    ->with('message','Data Telah Terhapus!')
+                    ->with('type','success')
+                    ->with('status','success');
     }
 }

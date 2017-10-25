@@ -1,4 +1,4 @@
-<li class="treeview">
+<li class="treeview  <?php echo e(active(['admin.penjualan.*','admin.pembayaran.penjualan'])); ?>">
 <a href="#">
   <i class="fa fa-cart-arrow-down fa-fw" aria-hidden="true"></i>
     <span>PENJUALAN</span>
