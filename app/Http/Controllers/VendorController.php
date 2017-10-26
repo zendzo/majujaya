@@ -15,7 +15,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-        $page_title = "Daftar Supplier";
+        $page_title = "Daftar Vendor";
 
         $data = Vendor::paginate(25);
 

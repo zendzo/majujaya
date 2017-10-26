@@ -12,17 +12,14 @@ class PenjualanTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        PenjualanType::create([
-        	[
-        		'type'	=>	'Penjualan Langsung Tunai'
-        	],
-        	[
-        		'type'	=>	'Penjualan Biasa'
-        	],
-        	[
-        		'type'	=> 'Penjualan Jasa'
-        	]
-        ]);
+
+        $types = ['Penjualan Langsung Tunai','Penjualan Biasa','Penjualan Jasa'];
+
+        foreach ($types as $type) {
+            PenjualanType::create([
+                'type'  => $type
+            ]);
+        }
 
         $this->command->info('Type Penjualan Created !');
     }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Penjualan;
 use Illuminate\Http\Request;
+use App\Penjualan;
+use App\PenjualanType;
 
 class PenjualanController extends Controller
 {
@@ -16,7 +17,9 @@ class PenjualanController extends Controller
     {
         $page_title = "Penjualan";
 
-        return view('penjualan.index',compact(['page_title']));
+        $penjualanType = PenjualanType::all();
+
+        return view('penjualan.index',compact(['page_title','penjualanType']));
     }
 
     public function pembayaranPenjualan()

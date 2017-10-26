@@ -28,7 +28,12 @@
                       <td><?php echo e($item->alamat); ?></td>
                       <td><?php echo e($item->phone); ?></td>
                       <td><?php echo e($item->npwp); ?></td>
-                      <td><?php echo e($item->status); ?></td>
+                      <td>
+                        <span class="label label-<?php echo e(statusClass($item->status)); ?>">
+                          <?php echo e(status($item->status)); ?>
+
+                        </span>
+                      </td>
                       <td><?php echo e($item->keterangan); ?></td>
 
                       <!-- button action -->

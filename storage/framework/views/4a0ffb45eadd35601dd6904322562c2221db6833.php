@@ -26,7 +26,25 @@
       format: 'mm/dd/yyyy'
     });
 
-    $(".select2").select2();
+    $(".select2").select2({
+       placeholder: 'Select an item',
+       minimumInputLength: 1,
+          ajax: {
+          url: '/users/find',
+          dataType: 'json',
+          data: function (params) {
+              return {
+                  q: $.trim(params.term)
+              };
+          },
+          processResults: function (data) {
+              return {
+                  results: data
+              };
+          },
+          cache: true
+      }
+    });
 
 	});
 </script>
@@ -50,11 +68,6 @@
 
                   <div class="col-sm-10">
                      <select class="form-control select2">
-	                    <option>option 1</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
 	                  </select>
                   </div>
                 </div>
@@ -79,10 +92,10 @@
             <form class="form-horizontal">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">KODE</label>
+                  <label for="kode" class="col-sm-2 control-label">KODE</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="KODE" disabled="" value="<?php echo e(strtoupper(str_random('6'))); ?>">
+                    <input type="kode" class="form-control" id="inputEmail3" placeholder="KODE" value="<?php echo e(strtoupper(str_random('6'))); ?>">
                   </div>
                 </div>
 
@@ -91,11 +104,9 @@
 
                   <div class="col-sm-10">
                      <select class="form-control">
-	                    <option selected>Silahkan Pilih</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
+                        <?php $__currentLoopData = $penjualanType; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <option value="<?php echo e($type->id); ?>"><?php echo e($type->type); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	                  </select>
                   </div>
                 </div>

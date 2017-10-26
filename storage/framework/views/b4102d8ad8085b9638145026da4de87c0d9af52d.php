@@ -28,7 +28,12 @@
                         <td><?php echo e($store->nama); ?></td>
                         <td><?php echo e($store->alamat); ?></td>
                         <td><?php echo e($store->npwp); ?></td>
-                        <td><?php echo e($store->status); ?></td>
+                        <td>
+                          <span class="label label-<?php echo e(statusClass($store->status)); ?>">
+                            <?php echo e(status($store->status)); ?>
+
+                          </span>
+                        </td>
                         <td><?php echo e($store->user->fullName()); ?></td>
                         <td><?php echo e($store->keterangan); ?></td>
                         <td>

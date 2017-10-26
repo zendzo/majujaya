@@ -30,7 +30,11 @@
                       <td>{{ $item->alamat }}</td>
                       <td>{{ $item->phone }}</td>
                       <td>{{ $item->npwp}}</td>
-                      <td>{{ $item->status }}</td>
+                      <td>
+                        <span class="label label-{{ statusClass($item->status)}}">
+                          {{ status($item->status) }}
+                        </span>
+                      </td>
                       <td>{{ $item->keterangan }}</td>
 
                       <!-- button action -->

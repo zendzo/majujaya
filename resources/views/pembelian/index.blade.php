@@ -71,10 +71,10 @@
 
               <div class="box-body form-horizontal">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">KODE</label>
+                  <label for="kode" class="col-sm-2 control-label">KODE</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="KODE" disabled="" value="{{ strtoupper(str_random('6')) }}">
+                    <input name="kode" class="form-control" id="kode" placeholder="KODE" value="{{ strtoupper(str_random('6')) }}">
                   </div>
                 </div>
 

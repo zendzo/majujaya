@@ -12,11 +12,11 @@ class PembelianTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        PembelianType::create([
-        	'type'	=>	'Pembelian Biasa',
-            'type'  =>  'Pembelian Langsung'
-        ]);
+        $types = ['Pembelian Biasa','Pembelian Langsung'];
 
+        foreach ($types as $type) {
+            PembelianType::create(['type' => $type ]);
+        }
         $this->command->info('Pembelian type Created !');
     }
 }

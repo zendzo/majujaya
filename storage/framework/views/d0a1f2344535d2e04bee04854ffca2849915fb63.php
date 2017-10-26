@@ -61,7 +61,7 @@
 
                 <div class="col-sm-10">
                   <select class="form-control" name="status" id="status">
-                    <option value="true">Aktif</option>
+                    <option value="1">Aktif</option>
                     <option value="0">Inaktif</option>
                   </select>
 

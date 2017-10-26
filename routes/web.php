@@ -80,3 +80,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/user/profile/{id}','UserProfileController@show');
+
+Route::get('/users/find','PelangganApiController@find');

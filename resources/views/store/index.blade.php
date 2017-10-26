@@ -30,7 +30,11 @@
                         <td>{{ $store->nama }}</td>
                         <td>{{ $store->alamat }}</td>
                         <td>{{ $store->npwp }}</td>
-                        <td>{{ $store->status }}</td>
+                        <td>
+                          <span class="label label-{{ statusClass($store->status)}}">
+                            {{ status($store->status) }}
+                          </span>
+                        </td>
                         <td>{{ $store->user->fullName() }}</td>
                         <td>{{ $store->keterangan }}</td>
                         <td>

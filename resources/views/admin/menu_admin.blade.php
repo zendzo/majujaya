@@ -9,9 +9,6 @@
         <a href="{{ route('admin.role.index') }}"><i class="fa fa-key fa-fw"></i>Peran</a>
     </li>
     <li class="">
-        <a href="{{ route('admin.store.index') }}"><i class="fa fa-umbrella fa-fw"></i>Toko</a>
-    </li>
-    <li class="">
         <a href="http://localhost:8080/dashboard/admin/unit"><i class="glyphicon glyphicon-flash"></i>Satuan</a>
     </li>
     <li class="">

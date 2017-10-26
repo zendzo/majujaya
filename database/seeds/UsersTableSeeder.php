@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 
 use Carbon\Carbon;
+use Faker\Factory as Faker;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,19 +16,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = new User;
+        $faker = Faker::create('id_ID');
 
-        for ($i=0; $i < 1; $i++) { 
-        	$user->first_name = 'Administrator';
-	        $user->last_name = 'System';
-            $user->email = 'admin@majujaya.com';
-	        $user->phone = 'phone';
-	        $user->password = 'adminadmin';
-	        $user->role_id = 1;
-	        $user->save();
+        foreach (range(0,10) as $index) {
+            User::create([
+                'first_name'    =>  $faker->firstName,
+                'last_name'     =>  $faker->lastName,
+                'email'         =>  $faker->safeEmail,
+                'phone'         =>  $faker->phoneNumber,
+                'password'      =>  'adminadmin',
+                'role_id'       =>  2
+            ]);
         }
 
-        $this->command->info('Administrator User Created !');
+        $this->command->info('User Fake Data Created !');
 
     }
 }

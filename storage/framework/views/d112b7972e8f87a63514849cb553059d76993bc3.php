@@ -28,7 +28,12 @@
                       <td><?php echo e($item->plat); ?></td>
                       <td><?php echo e($item->tanggal_inspeksi->format('d/m/Y')); ?></td>
                       <td><?php echo e($item->pengemudi); ?></td>
-                      <td><?php echo e($item->status); ?></td>
+                      <td>
+                        <span class="label label-<?php echo e(statusClass($item->status)); ?>">
+                          <?php echo e(status($item->status)); ?>
+
+                        </span>
+                      </td>
                       <td><?php echo e($item->keterangan); ?></td>
 
                       <!-- button action -->
