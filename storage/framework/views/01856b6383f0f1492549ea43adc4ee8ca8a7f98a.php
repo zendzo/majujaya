@@ -35,10 +35,13 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form class="form-horizontal"  action="<?php echo e(route('admin.pembelian.store')); ?>" method="POST">
+              <?php echo e(csrf_field()); ?>
+
+
               <div class="box-body">
               	<div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Supplier</label>
+                  <label for="supplier_id" class="col-sm-2 control-label">Supplier</label>
 
                   <div class="col-sm-10">
                      <select class="form-control" name="supplier_id">
@@ -50,7 +53,6 @@
                 </div>
               </div>
               <!-- /.box-body -->
-            </form>
           </div>
           <!-- /.box -->
 
@@ -65,8 +67,8 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
-              <div class="box-body">
+
+              <div class="box-body form-horizontal">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">KODE</label>
 
@@ -88,16 +90,16 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">TANGGAL PO</label>
+                  <label for="tanggal_po" class="col-sm-2 control-label">TANGGAL PO</label>
 
                   <div class="col-sm-10">
-                    <input name="masa_tahun" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
+                    <input name="tanggal_po" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
                   </div>
                 </div>
 
               </div>
               <!-- /.box-body -->
-            </form>
+
           </div>
 
           <!-- /.box -->
@@ -116,21 +118,22 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
-              <div class="box-body">
+
+              <div class="box-body form-horizontal">
 
               	<div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Kirim</label>
+                  <label for="tanggal_kirim" class="col-sm-2 control-label">Tanggal Kirim</label>
 
                   <div class="col-sm-10">
-                    <input name="masa_tahun" type="text" class="form-control pull-right" id="datepicker2" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
+                    <input name="tanggal_kirim" type="text" class="form-control pull-right" id="datepicker2" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
                   </div>
                 </div>
 
+                
                 <?php echo $__env->make('form_partials.delivery_options', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Keterangan</label>
+                  <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                   <div class="col-sm-10">
                      <textarea class="form-control" name="keterangan"></textarea>

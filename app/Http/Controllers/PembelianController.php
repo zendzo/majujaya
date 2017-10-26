@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePembelian;
 use App\PembelianType;
 use App\Supplier;
-use App\Vendor;
-use App\Gudang;
 
 class PembelianController extends Controller
 {
@@ -23,7 +22,7 @@ class PembelianController extends Controller
 
         $orderType = PembelianType::all();
 
-        return view('pembelian.index',compact(['page_title','suppliers','orderType','warehouse','vendors']));
+        return view('pembelian.index',compact(['page_title','suppliers','orderType']));
     }
 
     public function pembayaranPembelian()
@@ -51,7 +50,9 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        return $input;
     }
 
     /**

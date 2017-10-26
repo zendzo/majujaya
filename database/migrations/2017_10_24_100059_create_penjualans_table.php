@@ -21,7 +21,7 @@ class CreatePenjualansTable extends Migration
             $table->date('tanggal_so');
             $table->date('tanggal_kirim');
             $table->string('gudang_id');
-            $table->string('penyedia_id');
+            $table->string('vendor_id');
             $table->timestamps();
         });
     }

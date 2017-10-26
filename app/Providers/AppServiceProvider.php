@@ -19,10 +19,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('product_type', ProductType::all());
-        View::share('truck_type', TruckType::all());
-        View::share('warehouses', Gudang::all());
-        View::share('vendors', Vendor::all());
+        if (! $this->app->runningInConsole()) {
+
+            View::share('product_type', ProductType::all());
+
+            View::share('truck_type', TruckType::all());
+
+            View::share('warehouses', Gudang::all());
+
+            View::share('vendors', Vendor::all());
+        
+        }
     }
 
     /**
