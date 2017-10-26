@@ -21,7 +21,7 @@
             </div>
             <!-- /.box-header --> 
           <div class="box-body">
-            <form class="form-horizontal"  action="<?php echo e(route('admin.supplier.store')); ?>" method="POST">
+            <form class="form-horizontal"  action="<?php echo e(route('admin.vendor.store')); ?>" method="POST">
               <?php echo e(csrf_field()); ?>
 
 

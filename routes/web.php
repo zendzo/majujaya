@@ -6,7 +6,10 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(){
 
-	Route::get('/','AdminController@index');
+	Route::get('/',[
+		'as'	=>	'dashboard',
+		'uses'	=>	'AdminController@index'
+	]);
 
 	Route::resource('pengguna','PenggunaController');
 
@@ -25,6 +28,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 	Route::resource('warehouse','WarehouseController');
 
 	Route::resource('truck','TruckController');
+
+	Route::resource('vendor','VendorController');
 
 	Route::get('pembayaran-pembelian',[
 		'as'	=>	'pembayaran.pembelian',

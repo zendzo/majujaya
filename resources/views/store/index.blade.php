@@ -7,7 +7,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header">
-              <img style="height: 50px;" src="{{ asset('AdminLTE/dist/img/BNI.png') }}">
+              <h4>{{$page_title}}</h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

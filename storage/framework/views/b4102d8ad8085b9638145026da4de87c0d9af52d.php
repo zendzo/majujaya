@@ -5,7 +5,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header">
-              <img style="height: 50px;" src="<?php echo e(asset('AdminLTE/dist/img/BNI.png')); ?>">
+              <h4><?php echo e($page_title); ?></h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

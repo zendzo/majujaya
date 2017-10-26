@@ -1,18 +1,5 @@
 @extends('layouts.master')
 
-@section('jsPlugins')
-<script>
-  $('#reset').click(function(){
-    swal({
-      buttons: {
-        cancel: true,
-        confirm: true,
-      },
-    });
-  });
-</script>
-@endsection
-
 @section('content')
 <div class="row">
   <div class="col-md-12">
@@ -23,14 +10,15 @@
             </div>
             <!-- /.box-header --> 
           <div class="box-body">
-            <form class="form-horizontal"  action="{{ route('admin.supplier.store') }}" method="POST">
+            <form class="form-horizontal"  action="{{ route('admin.supplier.update',$vendor->id) }}" method="POST">
               {{ csrf_field() }}
+              {{ method_field('PATCH') }}
 
               <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                 <label for="nama" class="col-sm-2 control-label">Nama</label>
 
                 <div class="col-sm-8">
-                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="{{ old('nama') }}">
+                  <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" value="{{ $vendor->nama}}">
 
                   @if ($errors->has('nama'))
                       <span class="help-block">
@@ -44,7 +32,7 @@
                 <label for="alamat" class="col-sm-2 control-label">Alamat</label>
 
                 <div class="col-sm-8">
-                  <textarea class="form-control" name="alamat" value="{{ old('alamat') }}" placeholder="Alamat"></textarea>
+                  <textarea class="form-control" name="alamat" placeholder="Alamat"> {{ $vendor->alamat }} </textarea>
 
                   @if ($errors->has('alamat'))
                       <span class="help-block">
@@ -58,7 +46,7 @@
                 <label for="phone" class="col-sm-2 control-label">Phone</label>
 
                 <div class="col-sm-8">
-                  <input id="phone" name="phone" type="text" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
+                  <input id="phone" name="phone" type="text" class="form-control" placeholder="Phone" value="{{ $vendor->phone }}">
 
                   @if ($errors->has('phone'))
                       <span class="help-block">
@@ -72,7 +60,7 @@
                 <label for="npwp" class="col-sm-2 control-label">NPWP</label>
 
                 <div class="col-sm-8">
-                  <input id="npwp" name="npwp" type="text" class="form-control" placeholder="NPWP" value="{{ old('npwp') }}">
+                  <input id="npwp" name="npwp" type="text" class="form-control" placeholder="NPWP" value="{{ $vendor->npwp }}">
 
                   @if ($errors->has('npwp'))
                       <span class="help-block">
@@ -103,7 +91,7 @@
                 <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                 <div class="col-sm-8">
-                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="{{ old('keterangan') }}">
+                  <input id="keterangan" name="keterangan" type="text" class="form-control" placeholder="keterangan" value="{{ $vendor->keterangan }}">
 
                   @if ($errors->has('keterangan'))
                       <span class="help-block">
@@ -116,7 +104,7 @@
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                  <button type="reset" id="reset" class="btn btn-primary"><i class="fa fa-trash-o"></i> Cancel</button>
+                  <button type="reset" class="btn btn-primary"><i class="fa fa-trash-o"></i> Cancel</button>
                 </div>
               </div>
             </form>

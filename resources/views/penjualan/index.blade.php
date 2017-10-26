@@ -142,34 +142,8 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Gudang</label>
-
-                  <div class="col-sm-10">
-                     <select class="form-control">
-	                    <option>option 1</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
-	                  </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Angkutan</label>
-
-                  <div class="col-sm-10">
-                     <select class="form-control">
-	                    <option>option 1</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
-	                  </select>
-                  </div>
-                </div>
-
+                @include('form_partials.delivery_options')
+                
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Keterangan</label>
 

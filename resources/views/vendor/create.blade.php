@@ -23,7 +23,7 @@
             </div>
             <!-- /.box-header --> 
           <div class="box-body">
-            <form class="form-horizontal"  action="{{ route('admin.supplier.store') }}" method="POST">
+            <form class="form-horizontal"  action="{{ route('admin.vendor.store') }}" method="POST">
               {{ csrf_field() }}
 
               <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">

@@ -24,10 +24,6 @@
       format: 'mm/dd/yyyy'
     });
 
-    $('#datepicker2').datepicker({
-      format: 'mm/dd/yyyy'
-    });
-
     $(".select2").select2();
 
   });

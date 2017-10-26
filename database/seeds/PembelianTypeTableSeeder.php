@@ -13,7 +13,8 @@ class PembelianTypeTableSeeder extends Seeder
     public function run()
     {
         PembelianType::create([
-        	'type'	=>	'Pembelian Biasa'
+        	'type'	=>	'Pembelian Biasa',
+            'type'  =>  'Pembelian Langsung'
         ]);
 
         $this->command->info('Pembelian type Created !');

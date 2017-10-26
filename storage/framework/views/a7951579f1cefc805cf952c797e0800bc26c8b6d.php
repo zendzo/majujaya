@@ -1,7 +1,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="index2.html" class="logo"><?php echo e(config('app.name')); ?></a>
+            <a href="<?php echo e(route('admin.dashboard')); ?>" class="logo"><?php echo e(config('app.name')); ?></a>
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">

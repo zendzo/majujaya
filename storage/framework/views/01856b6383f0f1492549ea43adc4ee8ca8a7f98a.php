@@ -41,16 +41,13 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Supplier</label>
 
                   <div class="col-sm-10">
-                     <select class="form-control">
-	                    <option>option 1</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
+                     <select class="form-control" name="supplier_id">
+                      <?php $__currentLoopData = $suppliers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $supplier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($supplier->id); ?>"><?php echo e($supplier->nama); ?></option>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	                  </select>
                   </div>
                 </div>
-
               </div>
               <!-- /.box-body -->
             </form>
@@ -82,12 +79,10 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">TIPE</label>
 
                   <div class="col-sm-10">
-                     <select class="form-control">
-	                    <option>option 1</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
+                     <select name="pembelian_type_id" class="form-control">
+                      <?php $__currentLoopData = $orderType; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($order->id); ?>"><?php echo e($order->type); ?></option>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	                  </select>
                   </div>
                 </div>
@@ -132,33 +127,7 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Gudang</label>
-
-                  <div class="col-sm-10">
-                     <select class="form-control">
-	                    <option>option 1</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
-	                  </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Angkutan</label>
-
-                  <div class="col-sm-10">
-                     <select class="form-control">
-	                    <option>option 1</option>
-	                    <option>option 2</option>
-	                    <option>option 3</option>
-	                    <option>option 4</option>
-	                    <option>option 5</option>
-	                  </select>
-                  </div>
-                </div>
+                <?php echo $__env->make('form_partials.delivery_options', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Keterangan</label>
