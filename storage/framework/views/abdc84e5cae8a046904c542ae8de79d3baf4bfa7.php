@@ -27,7 +27,12 @@
                       <td><?php echo e($item->product_type_id); ?></td>
                       <td><?php echo e($item->kode); ?></td>
                       <td><?php echo e($item->deskripsi); ?></td>
-                      <td><?php echo e($item->status); ?></td>
+                      <td>
+                          <span class="label label-<?php echo e(statusClass($item->status)); ?>">
+                            <?php echo e(status($item->status)); ?>
+
+                          </span>
+                        </td>
 
                       <!-- button action -->
                       <td width="10%" class="text-center">

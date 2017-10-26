@@ -75,7 +75,11 @@ class ProductTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productType = productType::findOrFail($id);
+
+        $page_title = "Edit Product ". $productType->nama;
+
+        return view('product-type.edit',compact(['productType','page_title']));
     }
 
     /**
@@ -85,9 +89,16 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProductType $request, $id)
     {
-        //
+        $productType = ProductType::findOrFail($id);
+
+        $productType->update($request->all());
+
+        return redirect()->route('admin.product-type.index')
+                        ->with('message',"Data $productType->nama Telah Diupdate!")
+                        ->with('status','success')
+                        ->with('type','success');
     }
 
     /**
@@ -98,6 +109,15 @@ class ProductTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $productType = ProductType::findOrFail($id);
+
+        $delete = $productType->delete();
+
+        if ($delete) {
+            return redirect()->route('admin.product-type.index')
+                        ->with('message',"Data $productType->nama Telah Dihapus!")
+                        ->with('status','success')
+                        ->with('type','success');
+        }
     }
 }

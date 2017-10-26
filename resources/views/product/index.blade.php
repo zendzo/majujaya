@@ -29,7 +29,11 @@
                       <td>{{ $item->product_type_id }}</td>
                       <td>{{ $item->kode }}</td>
                       <td>{{ $item->deskripsi }}</td>
-                      <td>{{ $item->status}}</td>
+                      <td>
+                          <span class="label label-{{ statusClass($item->status)}}">
+                            {{ status($item->status) }}
+                          </span>
+                      </td>
 
                       <!-- button action -->
                       <td width="10%" class="text-center">
