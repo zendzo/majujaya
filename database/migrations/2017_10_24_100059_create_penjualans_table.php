@@ -23,6 +23,7 @@ class CreatePenjualansTable extends Migration
             $table->string('gudang_id');
             $table->string('vendor_id');
             $table->string('keterangan');
+            $table->integer('bayar')->nullable();
             $table->timestamps();
         });
     }

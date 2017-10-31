@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['product_id','satuan_id','pembelian_id','jumlah','harga'];
+    protected $fillable = ['product_id','satuan_id','pembelian_id','jumlah','harga','bayar'];
 
     public function getTotalAttribute()
     {
@@ -21,5 +21,10 @@ class Order extends Model
     public function satuan()
     {
     	return $this->belongsTo('App\Satuan','satuan_id');
+    }
+
+    public function pembelian()
+    {
+        return $this->belongsTo('App\Pembelian','pembelian_id');
     }
 }

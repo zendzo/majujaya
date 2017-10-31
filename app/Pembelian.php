@@ -15,7 +15,8 @@ class Pembelian extends Model
 							'tanggal_kirim',
 							'gudang_id',
 							'vendor_id',
-							'keterangan'
+							'keterangan',
+							'bayar'
 						];
 
 	protected $dates = ['tanggal_po','tanggal_kirim'];
@@ -49,5 +50,10 @@ class Pembelian extends Model
 	public function vendor()
 	{
 		return $this->belongsTo('App\Vendor');
+	}
+
+	public function orders()
+	{
+		return $this->hasMany('App\Order','pembelian_id');
 	}
 }

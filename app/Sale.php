@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
-    protected $fillable = ['product_id','satuan_id','penjualan_id','jumlah','harga'];
+    protected $fillable = ['product_id','satuan_id','penjualan_id','jumlah','harga','bayar'];
 
     public function getTotalAttribute()
     {
@@ -26,5 +26,10 @@ class Sale extends Model
     public function user()
     {
         return $this->belongsTo('App\User','user_id');
+    }
+
+    public function penjualan()
+    {
+        return $this->belongsTo('App\Penjualan','penjualan_id');
     }
 }

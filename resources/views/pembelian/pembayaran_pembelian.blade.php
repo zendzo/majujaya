@@ -8,7 +8,7 @@
 <!-- page script -->
 <script>
   $(function () {
-  	$('#example1').DataTable({});
+    $('#example1').DataTable({});
     $('#example2').DataTable({
 
     });
@@ -32,28 +32,34 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Supplier</th>
                   <th>Kode Nota</th>
-                  <th>Tipe Pembelian</th>
-                  <th>Tanggal Pembelian</th>
+                  <th>Supplier</th>
+                  <th>Tanggal Penjualan</th>
                   <th>Tanggal Pengiriman</th>
-                  <th>Gudang</th>
+                  <th>Tipe Penjualan</th>
+                  <th>Dari Gudang</th>
                   <th>Layanan Angkutan</th>
                   <th>Keterangan</th>
+                  <th>Total</th>
+                  <th>Pembayaran</th>
+                  <th>Sisa Pembayaran</th>
                 </tr>
                 </thead>
 
                 <tbody>
                   @foreach($orders as $order)
                    <tr>
-                      <td>{{ $order->supplier->nama }}</td>
                       <td>{{ $order->kode }}</td>
-                      <td>{{ $order->type->type }}</td>
+                      <td>{{ $order->supplier->nama }}</td>
                       <td>{{ $order->tanggal_po->format('d/m/Y') }}</td>
                       <td>{{ $order->tanggal_kirim->format('d/m/Y') }}</td>
+                      <td>{{ $order->type->type }}</td>
                       <td>{{ $order->gudang->nama }}</td>
                       <td>{{ $order->vendor->nama }}</td>
                       <td>{{ $order->keterangan }}</td>
+                      <td>{{ $order->orders->sum('total') }}</td>
+                      <td>{{ $order->bayar }}</td>
+                      <td>{{ $order->orders->sum('total') - $order->bayar }}</td>
                    </tr>
                   @endforeach
                 </tbody>
