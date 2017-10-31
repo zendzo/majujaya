@@ -9,6 +9,9 @@ use App\ProductType;
 use App\TruckType;
 use App\Gudang;
 use App\Vendor;
+use App\Supplier;
+use App\Product;
+use App\Satuan;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +31,12 @@ class AppServiceProvider extends ServiceProvider
             View::share('warehouses', Gudang::all());
 
             View::share('vendors', Vendor::all());
+
+            View::share('suppliers', Supplier::all());
+
+            View::share('products', Product::all());
+
+            View::share('satuans', Satuan::all());
         
         }
     }

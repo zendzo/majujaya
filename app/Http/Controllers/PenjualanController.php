@@ -26,7 +26,9 @@ class PenjualanController extends Controller
     {
         $page_title = "Pembayaran Penjualan";
 
-        return view('penjualan.pembayaran_penjualan',compact(['page_title']));
+        $sales = Penjualan::orderBy('id','DESC')->get();
+
+        return view('penjualan.pembayaran_penjualan',compact(['page_title','sales']));
     }
 
     /**
@@ -47,7 +49,18 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        
+        $pembelian = new Penjualan;
+
+        $save = $pembelian->create($input);
+
+        if ($save) {
+            return redirect()->route('admin.penjualan.index')
+                            ->with('message','Nota Penjualan Telah Tersimpan')
+                            ->with('status','success')
+                            ->with('type','success');
+        }
     }
 
     /**

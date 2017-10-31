@@ -6,6 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="_token" content="<?php echo e(csrf_token()); ?>" />
     <title><?php echo e(isset($page_title) ? $page_title : config('app.name')); ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
@@ -56,10 +57,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <small><?php echo e(isset($page_description) ? $page_description : null); ?></small>
           </h1>
           <!-- You can dynamically generate breadcrumbs here -->
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
         </section>
 
         <!-- Main content -->
@@ -83,6 +80,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo e(asset ('AdminLTE/dist/js/app.min.js')); ?>" type="text/javascript"></script>
     <!-- alert -->
     <script src="<?php echo e(asset ('AdminLTE/dist/js/sweetalert.min.js')); ?>" type="text/javascript"></script>
+
+    <script src="<?php echo e(asset ('/js/laravel.ajax.js')); ?>" type="text/javascript"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins. 
           Both of these plugins are recommended to enhance the 

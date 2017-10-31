@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePembelian;
 use App\PembelianType;
+use App\Pembelian;
 use App\Supplier;
-
+use App\Satuan;
+use App\Product;
+use Illuminate\Support\Facades\Input;
 class PembelianController extends Controller
 {
     /**
@@ -22,14 +25,20 @@ class PembelianController extends Controller
 
         $orderType = PembelianType::all();
 
-        return view('pembelian.index',compact(['page_title','suppliers','orderType']));
+        $satuans = Satuan::all();
+
+        $products = Product::all();
+
+        return view('pembelian.index',compact(['page_title','suppliers','orderType','satuans','products']));
     }
 
     public function pembayaranPembelian()
     {
         $page_title = "Pembayaran Pembelian";
 
-        return view('pembelian.pembayaran_pembelian',compact(['page_title']));
+        $orders = Pembelian::orderBy('id','DESC')->get();
+
+        return view('pembelian.pembayaran_pembelian',compact(['page_title','orders']));
     }
 
     /**
@@ -50,9 +59,18 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $inputs = $request->all();
+        
+        $pembelian = new Pembelian;
 
-        return $input;
+        $save = $pembelian->create($inputs);
+
+        if ($save) {
+            return redirect()->route('admin.pembelian.index')
+                            ->with('message','Nota Pembelian Telah Tersimpan')
+                            ->with('status','success')
+                            ->with('type','success');
+        }
     }
 
     /**

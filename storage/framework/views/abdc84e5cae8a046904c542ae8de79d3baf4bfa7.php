@@ -32,7 +32,7 @@
                             <?php echo e(status($item->status)); ?>
 
                           </span>
-                        </td>
+                      </td>
 
                       <!-- button action -->
                       <td width="10%" class="text-center">

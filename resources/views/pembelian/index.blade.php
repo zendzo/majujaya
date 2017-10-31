@@ -13,147 +13,148 @@
 <script src="{{ asset('AdminLTE/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{ asset('AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 <script>
-	$(function(){
+  $(function(){
 
     $('#datepicker').datepicker({
-      format: 'mm/dd/yyyy'
+      format: 'dd/mm/yyyy'
     });
 
     $('#datepicker2').datepicker({
-      format: 'mm/dd/yyyy'
-    }); 
-	});
+      format: 'dd/mm/yyyy'
+    });
+  });
 </script>
 @endsection
 @section('content')
 <div class="row">
-        <!-- left column -->
-        <div class="col-md-6">
+  <!-- left column -->
+  <div class="col-md-6">
 
-          <!-- general form elements -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Supplier</h3>
+    <!-- general form elements -->
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Supplier</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+      <form class="form-horizontal"  action="{{ route('admin.pembelian.store') }}" method="POST">
+      {{ csrf_field() }}
+
+        <div class="box-body">
+          <div class="form-group">
+            <label for="supplier_id" class="col-sm-2 control-label">Supplier</label>
+
+            <div class="col-sm-10">
+               <select class="form-control" name="supplier_id">
+                @foreach($suppliers as $supplier)
+                  <option value="{{ $supplier->id }}">{{ $supplier->nama }}</option>
+                @endforeach
+              </select>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal"  action="{{ route('admin.pembelian.store') }}" method="POST">
-              {{ csrf_field() }}
-
-              <div class="box-body">
-              	<div class="form-group">
-                  <label for="supplier_id" class="col-sm-2 control-label">Supplier</label>
-
-                  <div class="col-sm-10">
-                     <select class="form-control" name="supplier_id">
-                      @foreach($suppliers as $supplier)
-                        <option value="{{ $supplier->id }}">{{ $supplier->nama }}</option>
-                      @endforeach
-	                  </select>
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-
         </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <div class="col-md-6">
-          <!-- Horizontal Form -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Detail Pembelian</h3>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+  </div>
+  <!--/.col (left) -->
+  <!-- right column -->
+  <div class="col-md-6">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Detail Pembelian</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+
+        <div class="box-body form-horizontal">
+          <div class="form-group">
+            <label for="kode" class="col-sm-2 control-label">KODE</label>
+
+            <div class="col-sm-10">
+              <input name="kode" class="form-control" id="kode" placeholder="KODE" value="{{ strtoupper(str_random('6')) }}" readonly="">
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-
-              <div class="box-body form-horizontal">
-                <div class="form-group">
-                  <label for="kode" class="col-sm-2 control-label">KODE</label>
-
-                  <div class="col-sm-10">
-                    <input name="kode" class="form-control" id="kode" placeholder="KODE" value="{{ strtoupper(str_random('6')) }}">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">TIPE</label>
-
-                  <div class="col-sm-10">
-                     <select name="pembelian_type_id" class="form-control">
-                      @foreach($orderType as $order)
-                        <option value="{{ $order->id }}">{{ $order->type }}</option>
-                      @endforeach
-	                  </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="tanggal_po" class="col-sm-2 control-label">TANGGAL PO</label>
-
-                  <div class="col-sm-10">
-                    <input name="tanggal_po" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="{{ Date('m/d/Y') }}">
-                  </div>
-                </div>
-
-              </div>
-              <!-- /.box-body -->
-
           </div>
 
-          <!-- /.box -->
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">TIPE</label>
+
+            <div class="col-sm-10">
+               <select name="pembelian_type_id" class="form-control">
+                @foreach($orderType as $order)
+                  <option value="{{ $order->id }}">{{ $order->type }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tanggal_po" class="col-sm-2 control-label">TANGGAL PO</label>
+
+            <div class="col-sm-10">
+              <input name="tanggal_po" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="{{ Date('m/d/Y') }}">
+            </div>
+          </div>
+
         </div>
-        <!--/.col (right) -->
-      </div>	
+        <!-- /.box-body -->
+
+    </div>
+
+    <!-- /.box -->
+  </div>
+  <!--/.col (right) -->
+</div> 
 
 <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
+  <!-- left column -->
+  <div class="col-md-12">
 
-          <!-- general form elements -->
-         <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Pengiriman</h3>
+    <!-- general form elements -->
+   <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Pengiriman</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+
+        <div class="box-body form-horizontal">
+
+          <div class="form-group">
+            <label for="tanggal_kirim" class="col-sm-2 control-label">Tanggal Kirim</label>
+
+            <div class="col-sm-10">
+              <input name="tanggal_kirim" type="text" class="form-control pull-right" id="datepicker2" required="" placeholder="{{ Date('m/d/Y') }}">
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
+          </div>
 
-              <div class="box-body form-horizontal">
+          {{-- form_partials.delivery_options --}}
+          @include('form_partials.delivery_options')
 
-              	<div class="form-group">
-                  <label for="tanggal_kirim" class="col-sm-2 control-label">Tanggal Kirim</label>
+          <div class="form-group">
+              <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
-                  <div class="col-sm-10">
-                    <input name="tanggal_kirim" type="text" class="form-control pull-right" id="datepicker2" required="" placeholder="{{ Date('m/d/Y') }}">
-                  </div>
-                </div>
-
-                {{-- form_partials.delivery_options --}}
-                @include('form_partials.delivery_options')
-
-                <div class="form-group">
-                  <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
-
-                  <div class="col-sm-10">
-                     <textarea class="form-control" name="keterangan"></textarea>
-                </div>
-              </div>
-
-              </div>
-
-              <!-- /.box-body -->
-              
-              <!-- box footer -->
-            	<div class="box-footer">
-            		<button type="submit" class="btn btn-primary">Simpan</button>
-          		</div>
-              <!-- / .box footer -->
-            </form>
+              <div class="col-sm-10">
+                 <textarea class="form-control" name="keterangan"></textarea>
+            </div>
           </div>
 
         </div>
-      </div>	
 
+        <!-- /.box-body -->
+        
+        <!-- box footer -->
+        <div class="box-footer form-horizontal">
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </div>
+        <!-- / .box footer -->
+      
+    </div>
+
+  </div>
+</div>
 @endsection

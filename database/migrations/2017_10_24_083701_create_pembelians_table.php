@@ -22,6 +22,7 @@ class CreatePembeliansTable extends Migration
             $table->date('tanggal_kirim');
             $table->string('gudang_id');
             $table->string('vendor_id');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

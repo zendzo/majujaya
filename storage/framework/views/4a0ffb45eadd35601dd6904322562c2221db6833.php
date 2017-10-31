@@ -19,11 +19,11 @@
 	$(function(){
 
     $('#datepicker').datepicker({
-      format: 'mm/dd/yyyy'
+      format: 'dd/mm/yyyy'
     });
 
     $('#datepicker2').datepicker({
-      format: 'mm/dd/yyyy'
+      format: 'dd/mm/yyyy'
     });
 
     $(".select2").select2({
@@ -61,20 +61,22 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form class="form-horizontal"  action="<?php echo e(route('admin.penjualan.store')); ?>" method="POST">
+            <?php echo e(csrf_field()); ?>
+
               <div class="box-body">
               	<div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Nama</label>
+                  <label for="user_id" class="col-sm-2 control-label">Nama</label>
 
                   <div class="col-sm-10">
-                     <select class="form-control select2">
+                     <select name="user_id" class="form-control select2">
 	                  </select>
                   </div>
                 </div>
 
               </div>
               <!-- /.box-body -->
-            </form>
+
           </div>
           <!-- /.box -->
 
@@ -89,21 +91,21 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
-              <div class="box-body">
+
+              <div class="box-body form-horizontal">
                 <div class="form-group">
                   <label for="kode" class="col-sm-2 control-label">KODE</label>
 
                   <div class="col-sm-10">
-                    <input type="kode" class="form-control" id="inputEmail3" placeholder="KODE" value="<?php echo e(strtoupper(str_random('6'))); ?>">
+                    <input name="kode" class="form-control" id="inputEmail3" value="<?php echo e(strtoupper(str_random('6'))); ?>" readonly="">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">TIPE</label>
+                  <label for="penjualan_type_id" class="col-sm-2 control-label">TIPE</label>
 
                   <div class="col-sm-10">
-                     <select class="form-control">
+                     <select name="penjualan_type_id" class="form-control">
                         <?php $__currentLoopData = $penjualanType; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                           <option value="<?php echo e($type->id); ?>"><?php echo e($type->type); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -112,16 +114,16 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">TANGGAL PO</label>
+                  <label for="tanggal_so" class="col-sm-2 control-label">TANGGAL SO</label>
 
                   <div class="col-sm-10">
-                    <input name="masa_tahun" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
+                    <input name="tanggal_so" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
                   </div>
                 </div>
 
               </div>
               <!-- /.box-body -->
-            </form>
+
           </div>
 
           <!-- /.box -->
@@ -140,21 +142,21 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
-              <div class="box-body">
+
+              <div class="box-body form-horizontal">
 
               	<div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Kirim</label>
+                  <label for="tanggal_kirim" class="col-sm-2 control-label">Tanggal Kirim</label>
 
                   <div class="col-sm-10">
-                    <input name="masa_tahun" type="text" class="form-control pull-right" id="datepicker2" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
+                    <input name="tanggal_kirim" type="text" class="form-control pull-right" id="datepicker2" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
                   </div>
                 </div>
 
                 <?php echo $__env->make('form_partials.delivery_options', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Keterangan</label>
+                  <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                   <div class="col-sm-10">
                      <textarea class="form-control" name="keterangan"></textarea>

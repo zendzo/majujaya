@@ -1,7 +1,7 @@
 <li class="treeview {{ active(['admin.pembelian.*','admin.pembayaran.pembelian']) }}">
 <a href="#">
   <i class="fa fa-truck fa-fw" aria-hidden="true"></i>
-    <span>PEMBELIAN</span>
+    <span>NOTA PEMBELIAN</span>
   <i class="fa fa-angle-left pull-right"></i>
 </a>
   <ul class="treeview-menu">

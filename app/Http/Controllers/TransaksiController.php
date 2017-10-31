@@ -3,45 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pembelian;
+use App\Penjualan;
+use App\Order;
+use App\Sale as Sales;
 
 class TransaksiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     public function pembelian()
     {
         $page_title = "Transaksi Pembelian";
 
-        return view('transaksi.pembelian',compact(['page_title']));
+        $orders = Pembelian::orderBy('id','DESC')->get();
+
+        return view('transaksi.pembelian',compact(['page_title','orders']));
     }
 
     public function penjualan()
     {
         $page_title = "Transaksi Penjualan";
 
-        return view('transaksi.penjualan',compact(['page_title']));
+        $sales = Penjualan::orderBy('id','DESC')->get();
+
+        return view('transaksi.penjualan',compact(['page_title','sales']));
     }
 
-    public function revisiPembelian()
+    public function prosesPembelian($code)
     {
-        $page_title = "Daftar Transaksi Pembelian";
+        $page_title = "Detail Nota Transaksi Pembelian";
 
-        return view('transaksi.revisi_pembelian',compact(['page_title']));
+        $order = Pembelian::where('kode','=',$code)->first();
+
+        $order_items = Order::where('pembelian_id','=',$order->id)->get();
+
+        return view('transaksi.proses_pembelian',compact(['page_title','order','order_items']));
     }
 
-    public function revisiPenjualan()
+    public function prosesPenjualan($code)
     {
         $page_title = "Daftar Transaksi Penjualan";
 
-        return view('transaksi.revisi_penjualan',compact(['page_title']));
+        $sale = Penjualan::where('kode','=',$code)->first();
+
+        $sale_items = Sales::where('penjualan_id','=',$sale->id)->get();
+
+        return view('transaksi.proses_penjualan',compact(['page_title','sale','sale_items']));
     }
 
     /**
@@ -62,7 +68,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
     }
 
     /**
@@ -107,6 +113,6 @@ class TransaksiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // 
     }
 }

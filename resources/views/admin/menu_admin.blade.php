@@ -1,4 +1,4 @@
-<li class="treeview {{ active(['admin.role.*']) }}">
+<li class="treeview {{ active(['admin.role.*','admin.satuan.*']) }}">
 <a href="#"><i class="fa fa-viacoin fa-flip-vertical fa-fw"></i><span>&nbsp;Admin Menu</span>
     <span class="pull-right-container">
         <i class="fa fa-angle-left pull-right"></i>
@@ -8,14 +8,8 @@
     <li class="{{ active('admin.role.*') }}">
         <a href="{{ route('admin.role.index') }}"><i class="fa fa-key fa-fw"></i>Peran</a>
     </li>
-    <li class="">
-        <a href="http://localhost:8080/dashboard/admin/unit"><i class="glyphicon glyphicon-flash"></i>Satuan</a>
-    </li>
-    <li class="">
-        <a href="http://localhost:8080/dashboard/admin/currencies"><i class="glyphicon glyphicon-usd"></i>Mata Uang</a>
-    </li>
-    <li class="">
-        <a href="http://localhost:8080/dashboard/admin/phone/provider"><i class="glyphicon glyphicon-phone"></i>Provider Telepon</a>
+    <li class="{{ active('admin.satuan.*') }}">
+        <a href="{{ route('admin.satuan.index') }}"><i class="glyphicon glyphicon-flash"></i>Satuan</a>
     </li>
 </ul>
 </li>

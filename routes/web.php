@@ -31,6 +31,14 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 
 	Route::resource('vendor','VendorController');
 
+	Route::resource('satuan','SatuanController');
+
+	Route::resource('sales','TransaksiPenjualanController');
+
+	Route::resource('orders','TransaksiPembelianController');
+
+	// index nota transaksi
+
 	Route::get('pembayaran-pembelian',[
 		'as'	=>	'pembayaran.pembelian',
 		'uses'	=>	'PembelianController@pembayaranPembelian'
@@ -43,7 +51,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 
 	Route::resource('penjualan','PenjualanController');
 
-	// admin-revisi-transaksi
+	// admin-transaksi-jual-beli
 
 	Route::get('transksi-pembelian',[
 		'as'	=>	'transaksi.pembelian',
@@ -55,16 +63,16 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'TransaksiController@penjualan'
 	]);
 
-	// admin-revisi-transaksi
+	// admin-show-and-add-transaksi-items
 
-	Route::get('revisi-transksi-pembelian',[
-		'as'	=>	'revisi.transaksi.pembelian',
-		'uses'	=>	'TransaksiController@revisiPembelian'
+	Route::get('proses-transaksi-pembelian/{code}',[
+		'as'	=>	'proses.transaksi.pembelian',
+		'uses'	=>	'TransaksiController@prosesPembelian'
 	]);
 
-	Route::get('revisi-transksi-penujualan',[
-		'as'	=>	'revisi.transaksi.penjualan',
-		'uses'	=>	'TransaksiController@revisiPenjualan'
+	Route::get('proses-transaksi-penujualan/{code}',[
+		'as'	=>	'proses.transaksi.penjualan',
+		'uses'	=>	'TransaksiController@prosesPenjualan'
 	]);
 
 });
@@ -82,3 +90,5 @@ Route::get('/home', 'HomeController@index');
 Route::get('/user/profile/{id}','UserProfileController@show');
 
 Route::get('/users/find','PelangganApiController@find');
+
+Route::get('/pembelian/data',['as' => 'pembelian.data','uses' => 'PembelianApiController@getAll']);

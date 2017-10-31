@@ -17,11 +17,4 @@ class AdminController extends Controller
 
     	return view('admin.home',compact('page_title'));
     }
-
-    public function pegawaiIndex()
-    {
-    	$page_title = "Daftar Pegawai";
-
-    	return view('pegawai.index',compact('page_title'));
-    }
 }

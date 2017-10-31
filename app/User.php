@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasOne(Store::class);
     }
 
+    public function penjualan()
+    {
+        return $this->hasMany('App\Penjualan');
+    }
+
     public function fullName()
     {
         return $this->first_name.' '.$this->last_name;

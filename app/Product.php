@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = ['nama','product_type_id','kode','deskripsi','status','keterangan'];
+
+    public function sales()
+    {
+    	return $this->hasMany('App\Sales');
+    }
 }
