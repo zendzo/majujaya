@@ -5,8 +5,6 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
-use App\Role;
-use App\Store;
 
 class User extends Authenticatable
 {
@@ -36,12 +34,12 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo('App\Role');
     }
 
     public function store()
     {
-        return $this->hasOne(Store::class);
+        return $this->hasOne('App\Store');
     }
 
     public function penjualan()

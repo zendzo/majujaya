@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Store;
+use App\Penjualan;
 
 class UserProfileController extends Controller
 {
@@ -47,7 +49,11 @@ class UserProfileController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        $user = User::findOrFail($id);
+
+        $page_title = $user->fullName()." Profile";
+
+        return view('profile.show',compact(['user','page_title']));
     }
 
     /**

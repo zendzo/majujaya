@@ -102,7 +102,7 @@ class UserStoreController extends Controller
 
         $store->update($input);
 
-        return redirect()->route('user.store.index')
+        return redirect()->back()
         ->with('message', 'Data Telah Terupdate!')
         ->with('status','success')
         ->with('type','success');

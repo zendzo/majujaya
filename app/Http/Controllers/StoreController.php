@@ -46,6 +46,13 @@ class StoreController extends Controller
 
         $store = new Store;
 
+        if (Store::where('user_id',$input['user_id'])->first()) {
+            return redirect()->back()
+                            ->with('message','User Sudah Memiliki Sebuah Toko!')
+                            ->with('status','Tidak Dizinkan!')
+                            ->with('type','error');
+        }
+
         $save = $store->create($input);
 
         if ($save) {

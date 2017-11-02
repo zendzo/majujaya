@@ -81,6 +81,8 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
 
 	Route::resource('store','UserStoreController');
 
+	Route::resource('/profile','UserProfileController',['only' => ['show','update']]);
+
 });
 
 Auth::routes();
