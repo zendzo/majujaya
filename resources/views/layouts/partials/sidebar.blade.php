@@ -38,7 +38,7 @@
         @include('admin.menu_pelanggan')
         @include('admin.menu_master_data')
         @include('admin.menu_gudang')
-        @include('admin.menu_truck')
+        {{-- @include('admin.menu_truck') --}}
         @include('admin.menu_laporan')
         @include('admin.menu_admin')
       @endif

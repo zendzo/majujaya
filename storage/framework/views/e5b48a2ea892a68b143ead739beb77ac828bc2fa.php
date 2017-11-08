@@ -38,7 +38,7 @@
         <?php echo $__env->make('admin.menu_pelanggan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('admin.menu_master_data', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('admin.menu_gudang', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <?php echo $__env->make('admin.menu_truck', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        
         <?php echo $__env->make('admin.menu_laporan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('admin.menu_admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
       <?php endif; ?>

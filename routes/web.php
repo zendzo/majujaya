@@ -19,6 +19,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 
 	Route::resource('pembelian','PembelianController');
 
+	Route::resource('penjualan','PenjualanController');
+
 	Route::resource('supplier','SupplierController');
 
 	Route::resource('product','ProductController');
@@ -48,8 +50,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'as'	=>	'pembayaran.penjualan',
 		'uses'	=>	'PenjualanController@pembayaranPenjualan'
 	]);
-
-	Route::resource('penjualan','PenjualanController');
 
 	// admin-transaksi-jual-beli
 

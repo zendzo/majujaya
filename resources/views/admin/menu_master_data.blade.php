@@ -30,9 +30,9 @@
     <li class="{{ active('admin.warehouse.*') }}">
     	<a href="{{ route('admin.warehouse.index') }}"><i class="fa fa-hospital-o"></i>Gudang</a>
     </li>
-    <li class="{{ active('admin.truck.*') }}">
+    {{-- <li class="{{ active('admin.truck.*') }}">
     	<a href="{{ route('admin.truck.index') }}"><i class="fa fa-truck fa-flip-horizontal fa-fw"></i>Truck</a>
-    </li>
+    </li> --}}
 
     <li class="treeview {{ active(['admin.vendor.*']) }}">
 			<a href="#">

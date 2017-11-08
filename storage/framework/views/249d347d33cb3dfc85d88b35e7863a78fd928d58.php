@@ -30,9 +30,7 @@
     <li class="<?php echo e(active('admin.warehouse.*')); ?>">
     	<a href="<?php echo e(route('admin.warehouse.index')); ?>"><i class="fa fa-hospital-o"></i>Gudang</a>
     </li>
-    <li class="<?php echo e(active('admin.truck.*')); ?>">
-    	<a href="<?php echo e(route('admin.truck.index')); ?>"><i class="fa fa-truck fa-flip-horizontal fa-fw"></i>Truck</a>
-    </li>
+    
 
     <li class="treeview <?php echo e(active(['admin.vendor.*'])); ?>">
 			<a href="#">
