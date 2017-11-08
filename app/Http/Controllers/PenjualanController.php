@@ -48,7 +48,7 @@ class PenjualanController extends Controller
 
         if ($penjualan) {
 
-            $success = $penjualan->user->notify(new SendInvoiceSmsNotification($penjualan));
+            $success = $penjualan->user->notify(new SendPenjualanInvoiceSmsNotification($penjualan));
 
            return redirect()->back()
                         ->with('message','SMS Penaggihan Telah Dikirim ke : '.$penjualan->user->phone)

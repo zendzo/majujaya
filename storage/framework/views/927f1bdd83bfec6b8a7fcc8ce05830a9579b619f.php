@@ -11,7 +11,7 @@
     <li class="<?php echo e(active('admin.pembayaran.penjualan')); ?>">
     	<a href="<?php echo e(route('admin.pembayaran.penjualan')); ?>"><i class="fa fa-credit-card"></i>Pembayaran</a>
     </li>
-    <li class="<?php echo e(active(['admin.penjualan.*','admin.revisi.penjualan.completed'])); ?>">
+    <li class="<?php echo e(active(['admin.revisi.penjualan.completed'])); ?>">
     	<a href="<?php echo e(route('admin.revisi.penjualan.completed')); ?>"><i class="fa fa-code-fork fa-rotate-180 fa-fw"></i>Revisi</a>
     </li>
   </ul>

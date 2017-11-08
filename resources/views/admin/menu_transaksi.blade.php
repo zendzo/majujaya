@@ -21,7 +21,7 @@
 					<i class="fa fa-circle-o text-yellow"></i>&nbsp;Penjualan<span class="pull-right-container"><i class="fa fa-mail-reply fa-rotate-90 fa-fw"></i></span>
 				</a>
 			<ul class="treeview-menu ">
-				<li class="{{ active(['admin/proses-transaksi-penjualan/*']) }}">
+				<li class="{{ active(['admin.proses.transaksi.penjualan']) }}">
 					<a href="{{ route('admin.transaksi.penjualan') }}">
 					<i class="fa fa-arrow-circle-right"></i>Transaksi</a>
 				</li>

@@ -11,7 +11,7 @@
     <li class="{{ active('admin.pembayaran.pembelian') }}">
     	<a href="{{ route('admin.pembayaran.pembelian') }}"><i class="fa fa-credit-card"></i>Pembayaran</a>
     </li>
-    <li class="{{ active(['admin.pembelian.*','admin.revisi.pembelian.completed']) }}">
+    <li class="{{ active(['admin.revisi.pembelian.completed']) }}">
     	<a href="{{ route('admin.revisi.pembelian.completed') }}"><i class="fa fa-code-fork fa-rotate-180 fa-fw"></i>Revisi</a>
     </li>
   </ul>

@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Nerdify\SmsGateway\SmsGatewayChannel;
 use Nerdify\SmsGateway\SmsGatewayMessage;
 
-class SendInvoiceSmsNotification extends Notification
+class SendPenjualanInvoiceSmsNotification extends Notification
 {
     use Queueable;
 
