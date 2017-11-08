@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Nerdify\SmsGateway\SmsGatewayChannel;
 use Nerdify\SmsGateway\SmsGatewayMessage;
 
-class SendPenjualanInvoiceSmsNotification extends Notification
+class SendPembelianInvoiceSmsNotification extends Notification
 {
     use Queueable;
 
@@ -17,9 +17,9 @@ class SendPenjualanInvoiceSmsNotification extends Notification
      *
      * @return void
      */
-    public function __construct($penjualan)
+    public function __construct($pembelian)
     {
-        $this->penjualan = $penjualan;
+        $this->pembelian = $pembelian;
     }
 
     /**
@@ -41,12 +41,12 @@ class SendPenjualanInvoiceSmsNotification extends Notification
      */
     public function toSmsGateway($notifiable)
     {
-        $user = $this->penjualan->user->fullName();
-        $kode_penjualan = $this->penjualan->kode;
-        $total = $this->penjualan->sales->sum('total');
-        $bayar = $this->penjualan->bayar;
+        $user = $this->pembelian->supplier->nama;
+        $kode_pembelian = $this->pembelian->kode;
+        $total = $this->pembelian->orders->sum('total');
+        $bayar = $this->pembelian->bayar;
 
-        $content = "Sdr. $user Kd.Nota Tanggihan Anda $kode_penjualan Adalah Sebesar $total Dengan Total Pembayaran Sementara $bayar";
+        $content = "Yth. $user Kd.Nota Pemesanan $kode_pembelian Adalah Sebesar $total, Harap Cek Kode Pesanan";
         
         return (new SmsGatewayMessage)->content($content);
     }

@@ -51,6 +51,11 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'PenjualanController@sendSmsInvoce'
 	]);
 
+	Route::get('pembelian/send-sms-invoice/{code}',[
+		'as'	=>	'invoice.sms.pembelian',
+		'uses'	=>	'PembelianController@sendSmsInvoce'
+	]);
+
 	// open-closed-transatction
 
 	Route::get('pembelian/open/{code}',[

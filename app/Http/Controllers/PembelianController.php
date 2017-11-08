@@ -7,6 +7,8 @@ use App\Http\Requests\StorePembelian;
 use Illuminate\Support\Facades\Input;
 use App\Pembelian;
 
+use App\Notifications\SendPembelianInvoiceSmsNotification;
+
 
 class PembelianController extends Controller
 {
@@ -61,6 +63,28 @@ class PembelianController extends Controller
 
         return view('pembelian.list_revisi_pembelian',compact(['page_title','orders']));
     }
+
+    public function sendSmsInvoce($code)
+    {
+        $pembelian = Pembelian::where('kode',$code)->first();
+
+        if ($pembelian) {
+
+            $success = $pembelian->supplier->notify(new SendPembelianInvoiceSmsNotification($pembelian));
+
+           return redirect()->back()
+                        ->with('message','SMS Penaggihan Telah Dikirim ke : '.$pembelian->supplier->phone)
+                        ->with('status','SMS Telah Dikirim : '.$pembelian->supplier->nama)
+                        ->with('type','success');
+
+        }else{
+            return redirect()->back()
+                            ->with('message','Kode pembelian Tidak Ditemukan')
+                            ->with('status','Kode Tidak Terdaftar')
+                            ->with('type','erorr');
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Penjualan;
 use App\PenjualanType;
 
-use App\Notifications\SendInvoiceSmsNotification;
+use App\Notifications\SendPenjualanInvoiceSmsNotification;
 
 class PenjualanController extends Controller
 {

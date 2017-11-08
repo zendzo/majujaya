@@ -40,7 +40,7 @@
             <td>{{ $order->orders->sum('total') - $order->bayar }}</td>
             {{-- send invoice sms --}}
             <td>
-              <a href="#" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a>
+              <a href="{{ route('admin.invoice.sms.pembelian', $order->kode) }}" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a>
             </td>
          </tr>
         @endforeach
