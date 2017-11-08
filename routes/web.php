@@ -17,9 +17,45 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 
 	Route::resource('store','StoreController');
 
+	// pembelian
+
 	Route::resource('pembelian','PembelianController');
 
+	Route::get('pembelian-completed',[
+		'as'	=>	'revisi.pembelian.completed',
+		'uses'	=>	'PembelianController@listCompleted'
+	]);
+
+	Route::get('pembelian/revisi/{code}',[
+		'as'	=>	'revisi.pembelian',
+		'uses'	=>	'PembelianController@edit'
+	]);
+
+	// penjualan
+
 	Route::resource('penjualan','PenjualanController');
+
+	Route::get('penjualan-completed',[
+		'as'	=>	'revisi.penjualan.completed',
+		'uses'	=>	'PenjualanController@listCompleted'
+	]);
+
+	Route::get('penjualan/revisi/{code}',[
+		'as'	=>	'revisi.penjualan',
+		'uses'	=>	'PenjualanController@edit'
+	]);
+
+	// open-closed-transatction
+
+	Route::get('pembelian/open/{code}',[
+		'as'	=>	'pembelian.open',
+		'uses'	=>	'OpenCompletedTransactionController@openClosedOrder'
+	]);
+
+	Route::get('penjualan/open/{code}',[
+		'as'	=>	'penjualan.open',
+		'uses'	=>	'OpenCompletedTransactionController@openClosedSale'
+	]);	
 
 	Route::resource('supplier','SupplierController');
 
@@ -73,6 +109,18 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 	Route::get('proses-transaksi-penujualan/{code}',[
 		'as'	=>	'proses.transaksi.penjualan',
 		'uses'	=>	'TransaksiController@prosesPenjualan'
+	]);
+
+	// transaksi-selesai
+
+	Route::get('transaksi-pembelian-selesai/{code}',[
+		'as'	=>	'transaksi.pembelian.selesai',
+		'uses'	=>	'TransactionCompletedController@pembelian'
+	]);
+
+	Route::get('transaksi-penjualan-selesai/{code}',[
+		'as'	=>	'transaksi.penjualan.selesai',
+		'uses'	=>	'TransactionCompletedController@penjualan'
 	]);
 
 });

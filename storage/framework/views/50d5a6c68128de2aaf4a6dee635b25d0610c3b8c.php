@@ -131,7 +131,11 @@
 <?php echo $__env->make('form_partials.list_items_transaksi_penjualan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
-<?php echo $__env->make('form_partials.transaksi', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php if($sale->completed == true): ?>
+  <?php echo $__env->make('penjualan.penjualan_completed', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php else: ?>
+  <?php echo $__env->make('form_partials.transaksi', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

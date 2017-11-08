@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePembelian;
-use App\PembelianType;
-use App\Pembelian;
-use App\Supplier;
-use App\Satuan;
-use App\Product;
 use Illuminate\Support\Facades\Input;
+use App\Pembelian;
+
+
 class PembelianController extends Controller
 {
     /**
@@ -21,15 +19,7 @@ class PembelianController extends Controller
     {
         $page_title = "Pembelian";
 
-        $suppliers = Supplier::all();
-
-        $orderType = PembelianType::all();
-
-        $satuans = Satuan::all();
-
-        $products = Product::all();
-
-        return view('pembelian.index',compact(['page_title','suppliers','orderType','satuans','products']));
+        return view('pembelian.index',compact(['page_title']));
     }
 
     public function pembayaranPembelian()
@@ -39,16 +29,6 @@ class PembelianController extends Controller
         $orders = Pembelian::orderBy('id','DESC')->get();
 
         return view('pembelian.pembayaran_pembelian',compact(['page_title','orders']));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -73,17 +53,14 @@ class PembelianController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function listCompleted()
     {
-        //
-    }
+        $page_title = "Daftar Pembelian Telah Selesai";
 
+        $orders = Pembelian::where('completed',true)->orderBy('id','DESC')->get();
+
+        return view('pembelian.list_revisi_pembelian',compact(['page_title','orders']));
+    }
     /**
      * Show the form for editing the specified resource.
      *

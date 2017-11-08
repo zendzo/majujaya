@@ -7,14 +7,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo e($pembelian); ?></h3>
 
-              <p>Pegawai</p>
+              <p>Total Pembelian</p>
             </div>
             <div class="icon">
-              <i class="ion ion-ios-people-outline"></i>
+              <i class="glyphicon glyphicon-shopping-cart"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo e(route('admin.pembayaran.pembelian')); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -22,14 +22,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo e($penjualan); ?></h3>
 
-              <p>Cuti Berjalan</p>
+              <p>Total Penjualan</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="glyphicon glyphicon-send"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo e(route('admin.pembayaran.penjualan')); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -37,14 +37,14 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo e($supplier); ?></h3>
 
-              <p>Pengajuan Cuti Baru</p>
+              <p>Total Supplier</p>
             </div>
             <div class="icon">
               <i class="fa fa-files-o"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo e(route('admin.supplier.index')); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -52,14 +52,14 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?php echo e($pengguna); ?></h3>
 
-              <p>Tambah Daftar Pegawai</p>
+              <p>Total Pelanggan</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo e(route('admin.pengguna.index')); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

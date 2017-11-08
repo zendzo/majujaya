@@ -1,4 +1,4 @@
-<li class="treeview {{ active(['admin.pembelian.*','admin.pembayaran.pembelian']) }}">
+<li class="treeview {{ active(['admin.pembelian.*','admin.pembayaran.pembelian','admin.revisi.pembelian.completed']) }}">
 <a href="#">
   <i class="fa fa-truck fa-fw" aria-hidden="true"></i>
     <span>NOTA PEMBELIAN</span>
@@ -11,8 +11,8 @@
     <li class="{{ active('admin.pembayaran.pembelian') }}">
     	<a href="{{ route('admin.pembayaran.pembelian') }}"><i class="fa fa-credit-card"></i>Pembayaran</a>
     </li>
-    <li class="{{ active('admin.pembelian.*') }}">
-    	<a href="#"><i class="fa fa-code-fork fa-rotate-180 fa-fw"></i>Revisi</a>
+    <li class="{{ active(['admin.pembelian.*','admin.revisi.pembelian.completed']) }}">
+    	<a href="{{ route('admin.revisi.pembelian.completed') }}"><i class="fa fa-code-fork fa-rotate-180 fa-fw"></i>Revisi</a>
     </li>
   </ul>
 </li>

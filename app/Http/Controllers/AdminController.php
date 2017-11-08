@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pembelian;
+use App\Penjualan;
+use App\User;
+use App\Supplier;
 
 class AdminController extends Controller
 {
@@ -15,6 +19,14 @@ class AdminController extends Controller
     {
     	$page_title = "Halaman utama";
 
-    	return view('admin.home',compact('page_title'));
+    	$pembelian = Pembelian::count();
+
+    	$penjualan = Penjualan::count();
+
+    	$pengguna = User::count();
+
+    	$supplier = Supplier::count();
+
+    	return view('admin.home',compact(['page_title','pembelian','penjualan','pengguna','supplier']));
     }
 }

@@ -1,6 +1,6 @@
 <div class="row">
-<div class="col-sm-12">
-	<div class="box box-info">
+  <div class="col-sm-12">
+  <div class="box box-info">
     <div class="box-header with-border">
       <h3 class="box-title">Transaksi</h3>
     </div>
@@ -31,7 +31,7 @@
                   @endforeach
                 </select>
               </td>
-              <td><input name="jumlah" type="text" class="form-control pull-right"></td>
+              <td><input name="jumlah" type="text" class="form-control pull-right" required></td>
                <td>
                     <select name="satuan_id" class="form-control">
                       @foreach($satuans as $satuan)
@@ -39,7 +39,7 @@
                       @endforeach
                    </select>
               </td>
-              <td><input name="harga" type="text" class="form-control pull-right"></td>
+              <td><input name="harga" type="text" class="form-control pull-right" required=""></td>
               
               @empty ($sale->id)
                   <input type="text" name="pembelian_id" id="" value="{{ $order->id }}" hidden="">
@@ -57,7 +57,31 @@
       
       <!-- box footer -->
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        @empty ($sale->id)
+            @if ($order->completed == false)
+
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-fw fa-plus-circle"></i>
+            </button>
+            <a href="{{ route('admin.transaksi.pembelian.selesai', $order->kode) }}" class="btn btn-success">
+              <i class="fa fa-fw fa-check"></i> Transaksi Pembelian Selesai
+            </a>
+
+            @endif
+        @endempty
+
+        @empty ($order->id)
+            @if ($sale->completed == false)
+
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-fw fa-plus-circle"></i>
+            </button>
+            <a href="{{ route('admin.transaksi.penjualan.selesai', $sale->kode) }}" class="btn btn-success">
+              <i class="fa fa-fw fa-check"></i> Transaksi Penjualan Selesai
+            </a>
+
+            @endif
+        @endempty
       </div>
       </form>
       <!-- / .box footer -->

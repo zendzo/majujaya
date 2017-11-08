@@ -133,6 +133,10 @@
 @include('form_partials.list_items_transaksi_penjualan')
 
 {{-- transaksi --}}
-@include('form_partials.transaksi')
+@if ($sale->completed == true)
+  @include('penjualan.penjualan_completed')
+@else
+  @include('form_partials.transaksi')
+@endif
 
 @endsection

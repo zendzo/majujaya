@@ -12,15 +12,13 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin = new Role;
+        $role = ['Administrator','User','Supplier','Vendor'];
 
-        $admin->name = 'Administrator';
-        $admin->save();
-
-        $user = new Role;
-
-        $user->name = 'User';
-        $user->save();
+        foreach ($role as $index) {
+            Role::create([
+                'name' => $index
+            ]);
+        }
 
         $this->command->info('User Roles Created !');
     }

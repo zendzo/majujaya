@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
 use App\ProductType;
+use App\PembelianType;
 use App\TruckType;
 use App\Gudang;
 use App\Vendor;
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
         if (! $this->app->runningInConsole()) {
 
             View::share('product_type', ProductType::all());
+
+            View::share('order_type', PembelianType::all());
 
             View::share('truck_type', TruckType::all());
 

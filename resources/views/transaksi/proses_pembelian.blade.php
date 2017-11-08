@@ -133,6 +133,10 @@
 @include('form_partials.list_items_transaksi_pembelian')
 
 {{-- transaksi --}}
-@include('form_partials.transaksi')
+@if ($order->completed == true)
+  @include('pembelian.pembelian_completed')
+@else
+  @include('form_partials.transaksi')
+@endif
 
 @endsection

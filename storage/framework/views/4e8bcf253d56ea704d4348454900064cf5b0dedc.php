@@ -32,7 +32,7 @@
                     <?php echo e(csrf_field()); ?>
 
                     <button type="submit" class="btn btn-xs btn-danger">
-                      <span class="fa fa-close fa-fw"></span>
+                      <i class="fa fa-fw fa-minus-circle"></i>
                     </button>
                   </form>
                 </td>

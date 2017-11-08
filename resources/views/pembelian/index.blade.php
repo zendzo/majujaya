@@ -83,7 +83,7 @@
 
             <div class="col-sm-10">
                <select name="pembelian_type_id" class="form-control">
-                @foreach($orderType as $order)
+                @foreach($order_type as $order)
                   <option value="{{ $order->id }}">{{ $order->type }}</option>
                 @endforeach
               </select>

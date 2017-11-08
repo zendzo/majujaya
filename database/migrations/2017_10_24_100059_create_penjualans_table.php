@@ -24,6 +24,7 @@ class CreatePenjualansTable extends Migration
             $table->string('vendor_id');
             $table->string('keterangan');
             $table->integer('bayar')->nullable();
+            $table->boolean('completed')->default(false)->nullable();
             $table->timestamps();
         });
     }

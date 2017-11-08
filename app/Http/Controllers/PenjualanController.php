@@ -31,6 +31,15 @@ class PenjualanController extends Controller
         return view('penjualan.pembayaran_penjualan',compact(['page_title','sales']));
     }
 
+    public function listCompleted()
+    {
+        $page_title = "Daftar Penjualan Telah Selesai";
+
+        $sales = Penjualan::where('completed',true)->orderBy('id','DESC')->get();
+
+        return view('penjualan.list_revisi_penjualan',compact(['page_title','sales']));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
