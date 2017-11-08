@@ -38,7 +38,10 @@
             <td>{{ $order->orders->sum('total') }}</td>
             <td>{{ $order->bayar }}</td>
             <td>{{ $order->orders->sum('total') - $order->bayar }}</td>
-            <td><a href="#" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a></td>
+            {{-- send invoice sms --}}
+            <td>
+              <a href="#" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a>
+            </td>
          </tr>
         @endforeach
       </tbody>

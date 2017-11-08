@@ -170,6 +170,7 @@ return [
         Watson\Active\ActiveServiceProvider::class,
         App\Services\Ajax\ServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Nerdify\SmsGateway\SmsGatewayServiceProvider::class,
 
         /*
          * Application Service Providers...

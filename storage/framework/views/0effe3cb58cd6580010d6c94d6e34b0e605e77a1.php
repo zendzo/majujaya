@@ -11,13 +11,14 @@
         <th>Pelanggan</th>
         <th>Tanggal Penjualan</th>
         <th>Tanggal Pengiriman</th>
-        <th>Tipe Penjualan</th>
+        
         <th>Dari Gudang</th>
         <th>Layanan Angkutan</th>
-        <th>Keterangan</th>
+        
         <th>Total</th>
         <th>Pembayaran</th>
         <th>Sisa Pembayaran</th>
+        <th>Taggihan</th>
       </tr>
       </thead>
 
@@ -30,13 +31,17 @@
             <td><?php echo e($sale->user->fullName()); ?></td>
             <td><?php echo e($sale->tanggal_so->format('d/m/Y')); ?></td>
             <td><?php echo e($sale->tanggal_kirim->format('d/m/Y')); ?></td>
-            <td><?php echo e($sale->type->type); ?></td>
+            
             <td><?php echo e($sale->gudang->nama); ?></td>
             <td><?php echo e($sale->vendor->nama); ?></td>
-            <td><?php echo e($sale->keterangan); ?></td>
+            
             <td><?php echo e($sale->sales->sum('total')); ?></td>
             <td><?php echo e($sale->bayar); ?></td>
             <td><?php echo e($sale->sales->sum('total') - $sale->bayar); ?></td>
+            
+            <td>
+              <a href="<?php echo e(route('admin.invoice.sms.penjualan',$sale->kode)); ?>" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a>
+            </td>
          </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>

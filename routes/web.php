@@ -45,6 +45,12 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'PenjualanController@edit'
 	]);
 
+	// send-sms-invoice
+	Route::get('penjualan/send-sms-invoice/{code}',[
+		'as'	=>	'invoice.sms.penjualan',
+		'uses'	=>	'PenjualanController@sendSmsInvoce'
+	]);
+
 	// open-closed-transatction
 
 	Route::get('pembelian/open/{code}',[
@@ -142,3 +148,10 @@ Route::get('/user/profile/{id}','UserProfileController@show');
 Route::get('/users/find','PelangganApiController@find');
 
 Route::get('/pembelian/data',['as' => 'pembelian.data','uses' => 'PembelianApiController@getAll']);
+
+Route::get('test/sms', function(){
+	
+	$user = App\User::findOrFail(2);
+
+	$user->notify(new App\Notifications\TestSmsNotification);
+});

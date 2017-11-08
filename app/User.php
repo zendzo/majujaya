@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function routeNotificationForSmsGateway()
+    {
+        return $this->phone;
+    }
 }

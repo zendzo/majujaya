@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Penjualan;
 use App\PenjualanType;
 
+use App\Notifications\SendInvoiceSmsNotification;
+
 class PenjualanController extends Controller
 {
     /**
@@ -40,14 +42,25 @@ class PenjualanController extends Controller
         return view('penjualan.list_revisi_penjualan',compact(['page_title','sales']));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function sendSmsInvoce($code)
     {
-        //
+        $penjualan = Penjualan::where('kode',$code)->first();
+
+        if ($penjualan) {
+
+            $success = $penjualan->user->notify(new SendInvoiceSmsNotification($penjualan));
+
+           return redirect()->back()
+                        ->with('message','SMS Penaggihan Telah Dikirim ke : '.$penjualan->user->phone)
+                        ->with('status','SMS Telah Dikirim : '.$penjualan->user->fullName())
+                        ->with('type','success');
+
+        }else{
+            return redirect()->back()
+                            ->with('message','Kode Penjualan Tidak Ditemukan')
+                            ->with('status','Kode Tidak Terdaftar')
+                            ->with('type','erorr');
+        }
     }
 
     /**

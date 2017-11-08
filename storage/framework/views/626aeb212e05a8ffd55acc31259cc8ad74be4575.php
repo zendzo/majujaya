@@ -38,7 +38,10 @@
             <td><?php echo e($order->orders->sum('total')); ?></td>
             <td><?php echo e($order->bayar); ?></td>
             <td><?php echo e($order->orders->sum('total') - $order->bayar); ?></td>
-            <td><a href="#" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a></td>
+            
+            <td>
+              <a href="#" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a>
+            </td>
          </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>
