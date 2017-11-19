@@ -15,7 +15,7 @@
                         <!-- Messages: style can be found in dropdown.less-->
 
                         <?php if(Auth::user()->role_id === 1 ): ?>
-                            <?php echo $__env->make('layouts.partials.notification_menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                            
                         <?php endif; ?>
 
                         <?php echo $__env->make('layouts.partials.user_account_menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

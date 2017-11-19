@@ -15,7 +15,7 @@
                         <!-- Messages: style can be found in dropdown.less-->
 
                         @if(Auth::user()->role_id === 1 )
-                            @include('layouts.partials.notification_menu')
+                            {{-- @include('layouts.partials.notification_menu') --}}
                         @endif
 
                         @include('layouts.partials.user_account_menu')
