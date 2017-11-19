@@ -3,7 +3,7 @@
 @section('content')
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="/"><b>CUTI</b>Online</a>
+    <a href="/"><b>{{ env('APP_NAME') }}</b></a>
   </div>
 
     <div class="help-block text-center">

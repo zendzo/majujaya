@@ -18,7 +18,9 @@
         <th>Total</th>
         <th>Pembayaran</th>
         <th>Sisa Pembayaran</th>
-        <th>Taggihan</th>
+        @if (Auth::user()->role->id == "1")
+         <th>Taggihan</th>
+        @endif
       </tr>
       </thead>
 
@@ -26,7 +28,11 @@
         @foreach($sales as $sale)
          <tr>
             <td>
-              <a href="{{route('admin.proses.transaksi.penjualan',$sale->kode)}}">{{ $sale->kode }}</a>
+              @if (Auth::user()->role->id == "1")
+                <a href="{{route('admin.proses.transaksi.penjualan',$sale->kode)}}">{{ $sale->kode }}</a>
+              @else
+                <a href="{{route('user.proses.transaksi.penjualan',$sale->kode)}}">{{ $sale->kode }}</a>
+              @endif
             </td>
             <td>{{ $sale->user->fullName() }}</td>
             <td>{{ $sale->tanggal_so->format('d/m/Y') }}</td>
@@ -39,9 +45,13 @@
             <td>{{ $sale->bayar }}</td>
             <td>{{ $sale->sales->sum('total') - $sale->bayar }}</td>
             {{-- send invoice sms --}}
-            <td>
-              <a href="{{ route('admin.invoice.sms.penjualan',$sale->kode) }}" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a>
+            @if (Auth::user()->role->id == "1")
+              <td>
+              <a href="{{ route('admin.invoice.sms.pembelian', $sale->kode) }}" class="btn btn-info">
+                <i class="fa fa-fw fa-send"></i>
+              </a>
             </td>
+            @endif
          </tr>
         @endforeach
       </tbody>

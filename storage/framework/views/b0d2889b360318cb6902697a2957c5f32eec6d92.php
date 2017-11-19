@@ -1,6 +1,7 @@
-<!-- /.tab-pane -->
+  <!-- /.tab-pane -->
 <div class="tab-pane" id="store">
-<form class="form-horizontal"  action="<?php echo e(route('user.store.update',$user->store->id)); ?>" method="POST">
+<?php if(!empty($user->store)): ?>
+  <form class="form-horizontal"  action="<?php echo e(route('user.store.update',$user->store->id)); ?>" method="POST">
               <?php echo e(csrf_field()); ?>
 
               <?php echo e(method_field('PATCH')); ?>
@@ -85,6 +86,9 @@
                   <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
                 </div>
               </div>
-            </form>
+</form>
+<?php else: ?>
+<h1 class="text-center">Belum Ada Data Toko</h1>
+<?php endif; ?>
 </div>
 <!-- /.tab-pane -->

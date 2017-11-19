@@ -61,7 +61,11 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal"  action="<?php echo e(route('admin.penjualan.store')); ?>" method="POST">
+            <?php if(Auth::user()->role->id == "1"): ?>
+              <form class="form-horizontal"  action="<?php echo e(route('admin.penjualan.store')); ?>" method="POST">
+            <?php else: ?>
+              <form class="form-horizontal"  action="<?php echo e(route('user.pembelian.store')); ?>" method="POST">
+            <?php endif; ?>
             <?php echo e(csrf_field()); ?>
 
               <div class="box-body">
@@ -69,7 +73,12 @@
                   <label for="user_id" class="col-sm-2 control-label">Nama</label>
 
                   <div class="col-sm-10">
-                     <select name="user_id" class="form-control select2">
+                     <?php if(Auth::user()->role->id == "1"): ?>
+                       <select name="user_id" class="form-control select2">
+                    <?php else: ?>
+                      <input class="form-control" value="<?php echo e(Auth::user()->fullName()); ?>" readonly>
+                      <input type="hidden" name="user_id" class="form-control" value="<?php echo e(Auth::id()); ?>">
+                    <?php endif; ?>
 	                  </select>
                   </div>
                 </div>

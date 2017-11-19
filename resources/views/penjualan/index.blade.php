@@ -63,14 +63,23 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal"  action="{{ route('admin.penjualan.store') }}" method="POST">
+            @if (Auth::user()->role->id == "1")
+              <form class="form-horizontal"  action="{{ route('admin.penjualan.store') }}" method="POST">
+            @else
+              <form class="form-horizontal"  action="{{ route('user.pembelian.store') }}" method="POST">
+            @endif
             {{ csrf_field() }}
               <div class="box-body">
               	<div class="form-group">
                   <label for="user_id" class="col-sm-2 control-label">Nama</label>
 
                   <div class="col-sm-10">
-                     <select name="user_id" class="form-control select2">
+                     @if (Auth::user()->role->id == "1")
+                       <select name="user_id" class="form-control select2">
+                    @else
+                      <input class="form-control" value="{{ Auth::user()->fullName() }}" readonly>
+                      <input type="hidden" name="user_id" class="form-control" value="{{ Auth::id() }}">
+                    @endif
 	                  </select>
                   </div>
                 </div>

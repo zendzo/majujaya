@@ -1,6 +1,7 @@
-<!-- /.tab-pane -->
+  <!-- /.tab-pane -->
 <div class="tab-pane" id="store">
-<form class="form-horizontal"  action="{{ route('user.store.update',$user->store->id) }}" method="POST">
+@if (!empty($user->store))
+  <form class="form-horizontal"  action="{{ route('user.store.update',$user->store->id) }}" method="POST">
               {{ csrf_field() }}
               {{ method_field('PATCH') }}
 
@@ -83,6 +84,9 @@
                   <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
                 </div>
               </div>
-            </form>
+</form>
+@else
+<h1 class="text-center">Belum Ada Data Toko</h1>
+@endif
 </div>
 <!-- /.tab-pane -->

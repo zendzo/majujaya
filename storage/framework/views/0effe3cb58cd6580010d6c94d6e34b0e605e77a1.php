@@ -18,7 +18,9 @@
         <th>Total</th>
         <th>Pembayaran</th>
         <th>Sisa Pembayaran</th>
-        <th>Taggihan</th>
+        <?php if(Auth::user()->role->id == "1"): ?>
+         <th>Taggihan</th>
+        <?php endif; ?>
       </tr>
       </thead>
 
@@ -26,7 +28,11 @@
         <?php $__currentLoopData = $sales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
          <tr>
             <td>
-              <a href="<?php echo e(route('admin.proses.transaksi.penjualan',$sale->kode)); ?>"><?php echo e($sale->kode); ?></a>
+              <?php if(Auth::user()->role->id == "1"): ?>
+                <a href="<?php echo e(route('admin.proses.transaksi.penjualan',$sale->kode)); ?>"><?php echo e($sale->kode); ?></a>
+              <?php else: ?>
+                <a href="<?php echo e(route('user.proses.transaksi.penjualan',$sale->kode)); ?>"><?php echo e($sale->kode); ?></a>
+              <?php endif; ?>
             </td>
             <td><?php echo e($sale->user->fullName()); ?></td>
             <td><?php echo e($sale->tanggal_so->format('d/m/Y')); ?></td>
@@ -39,9 +45,13 @@
             <td><?php echo e($sale->bayar); ?></td>
             <td><?php echo e($sale->sales->sum('total') - $sale->bayar); ?></td>
             
-            <td>
-              <a href="<?php echo e(route('admin.invoice.sms.penjualan',$sale->kode)); ?>" class="btn btn-info"><i class="fa fa-fw fa-send"></i></a>
+            <?php if(Auth::user()->role->id == "1"): ?>
+              <td>
+              <a href="<?php echo e(route('admin.invoice.sms.pembelian', $sale->kode)); ?>" class="btn btn-info">
+                <i class="fa fa-fw fa-send"></i>
+              </a>
             </td>
+            <?php endif; ?>
          </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>

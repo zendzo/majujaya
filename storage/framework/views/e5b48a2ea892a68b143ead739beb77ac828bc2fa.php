@@ -46,8 +46,8 @@
       <!-- user menu -->
       <?php if(Auth::user()->role_id != 1): ?>
         <?php echo $__env->make('user.menu_data_toko', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <?php echo $__env->make('user.menu_stock', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <?php echo $__env->make('user.menu_penjualan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        
+        
         <?php echo $__env->make('user.menu_pesanan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->make('user.menu_laporan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
       <?php endif; ?>

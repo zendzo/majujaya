@@ -46,8 +46,8 @@
       <!-- user menu -->
       @if(Auth::user()->role_id != 1)
         @include('user.menu_data_toko')
-        @include('user.menu_stock')
-        @include('user.menu_penjualan')
+        {{-- @include('user.menu_stock') --}}
+        {{-- @include('user.menu_penjualan') --}}
         @include('user.menu_pesanan')
         @include('user.menu_laporan')
       @endif

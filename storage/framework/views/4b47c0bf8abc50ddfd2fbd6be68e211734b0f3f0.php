@@ -18,7 +18,13 @@
             
             <tr >
               <?php if(isset($sale->id)): ?>
-                <form class="form-horizontal" action="<?php echo e(route('admin.sales.store')); ?>" method="POST">
+              
+                <?php if(Auth::user()->role->id == "1"): ?>
+                  <form class="form-horizontal" action="<?php echo e(route('admin.sales.store')); ?>" method="POST">
+                <?php else: ?>
+                  <form class="form-horizontal" action="<?php echo e(route('user.sales.store')); ?>" method="POST">
+                <?php endif; ?>
+
               <?php elseif(isset($order->id)): ?>
                 <form class="form-horizontal" action="<?php echo e(route('admin.orders.store')); ?>" method="POST">
               <?php endif; ?>

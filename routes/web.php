@@ -117,7 +117,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'TransaksiController@prosesPembelian'
 	]);
 
-	Route::get('proses-transaksi-penujualan/{code}',[
+	Route::get('proses-transaksi-penjualan/{code}',[
 		'as'	=>	'proses.transaksi.penjualan',
 		'uses'	=>	'TransaksiController@prosesPenjualan'
 	]);
@@ -141,6 +141,38 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
 	Route::resource('store','UserStoreController');
 
 	Route::resource('/profile','UserProfileController',['only' => ['show','update']]);
+
+	// Penjualan as/is Pembelian on user
+
+	Route::resource('pembelian','PenjualanController');
+
+	Route::get('pembelian-completed',[
+		'as'	=>	'revisi.pembelian.completed',
+		'uses'	=>	'PenjualanController@listCompleted'
+	]);
+
+	Route::get('pembelian/revisi/{code}',[
+		'as'	=>	'revisi.pembelian',
+		'uses'	=>	'PenjualanController@edit'
+	]);
+
+	Route::get('pembayaran-pembelian',[
+		'as'	=>	'pembayaran.pembelian',
+		'uses'	=>	'PenjualanController@pembayaranPenjualan'
+	]);
+
+	Route::get('proses-transaksi-penujualan/{code}',[
+		'as'	=>	'proses.transaksi.penjualan',
+		'uses'	=>	'TransaksiController@prosesPenjualan'
+	]);
+
+	Route::resource('sales','TransaksiPenjualanController');
+
+	Route::get('transaksi-penjualan-selesai/{code}',[
+		'as'	=>	'transaksi.penjualan.selesai',
+		'uses'	=>	'TransactionCompletedController@penjualan'
+	]);
+
 
 });
 

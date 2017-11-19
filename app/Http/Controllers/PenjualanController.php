@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Penjualan;
 use App\PenjualanType;
 
@@ -28,7 +29,11 @@ class PenjualanController extends Controller
     {
         $page_title = "Pembayaran Penjualan";
 
-        $sales = Penjualan::orderBy('id','DESC')->get();
+        if (Auth::user()->role->id == "1") {
+            $sales = Penjualan::orderBy('id','DESC')->get();
+        }else{
+            $sales = Penjualan::where('user_id',Auth::id())->orderBy('id','DESC')->get();
+        }
 
         return view('penjualan.pembayaran_penjualan',compact(['page_title','sales']));
     }
@@ -37,7 +42,11 @@ class PenjualanController extends Controller
     {
         $page_title = "Daftar Penjualan Telah Selesai";
 
-        $sales = Penjualan::where('completed',true)->orderBy('id','DESC')->get();
+        if (Auth::user()->role == "1") {
+            $sales = Penjualan::where('completed',true)->orderBy('id','DESC')->get();
+        }else{
+            $sales = Penjualan::where('user_id',Auth::id())->where('completed',true)->orderBy('id','DESC')->get();
+        }
 
         return view('penjualan.list_revisi_penjualan',compact(['page_title','sales']));
     }
@@ -78,10 +87,17 @@ class PenjualanController extends Controller
         $save = $pembelian->create($input);
 
         if ($save) {
-            return redirect()->route('admin.penjualan.index')
+            if (Auth::user()->role == "1") {
+                return redirect()->route('admin.penjualan.index')
                             ->with('message','Nota Penjualan Telah Tersimpan')
                             ->with('status','success')
                             ->with('type','success');
+            }else{
+                return redirect()->route('user.pembayaran.pembelian')
+                            ->with('message','Nota Penjualan Telah Tersimpan')
+                            ->with('status','success')
+                            ->with('type','success');
+            }
         }
     }
 

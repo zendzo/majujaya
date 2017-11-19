@@ -26,13 +26,8 @@
                 <td>{{ $item->harga * $item->jumlah }}</td>
                 {{-- delete button --}}
                 <td width="10%" class="text-center">
-                  <form method="POST" action="{{ route('admin.sales.destroy',$item->id) }}" accept-charset="UTF-8" style="display:inline">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-xs btn-danger">
-                      <i class="fa fa-fw fa-minus-circle"></i>
-                    </button>
-                  </form>
+                  {{-- delete button dissable while completed --}}
+                  @include('form_partials.delete_button_transaction')
                 </td>
               </tr>
             @empty

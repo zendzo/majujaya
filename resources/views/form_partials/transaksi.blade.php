@@ -18,7 +18,13 @@
             {{-- TRANSAKSI FIELD --}}
             <tr >
               @if (isset($sale->id))
-                <form class="form-horizontal" action="{{ route('admin.sales.store') }}" method="POST">
+              
+                @if (Auth::user()->role->id == "1")
+                  <form class="form-horizontal" action="{{ route('admin.sales.store') }}" method="POST">
+                @else
+                  <form class="form-horizontal" action="{{ route('user.sales.store') }}" method="POST">
+                @endif
+
               @elseif(isset($order->id))
                 <form class="form-horizontal" action="{{ route('admin.orders.store') }}" method="POST">
               @endif

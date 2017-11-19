@@ -26,15 +26,8 @@
                 <td><?php echo e($item->harga * $item->jumlah); ?></td>
                 
                 <td width="10%" class="text-center">
-                  <form method="POST" action="<?php echo e(route('admin.sales.destroy',$item->id)); ?>" accept-charset="UTF-8" style="display:inline">
-                    <?php echo e(method_field('DELETE')); ?>
-
-                    <?php echo e(csrf_field()); ?>
-
-                    <button type="submit" class="btn btn-xs btn-danger">
-                      <i class="fa fa-fw fa-minus-circle"></i>
-                    </button>
-                  </form>
+                  
+                  <?php echo $__env->make('form_partials.delete_button_transaction', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                 </td>
               </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
