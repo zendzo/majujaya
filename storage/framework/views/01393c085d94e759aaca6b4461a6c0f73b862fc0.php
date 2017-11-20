@@ -19,7 +19,7 @@
       
       <?php if(isset($sale)): ?>
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">
+            <form class="form-horizontal" method="POST" action="<?php echo e(route('admin.custome.penjualan.invoice')); ?>">
                 <?php echo e(csrf_field()); ?>
 
                 <div class="form-group<?php echo e($errors->has('content') ? ' has-error' : ''); ?>">
@@ -33,6 +33,8 @@
                                 <strong><?php echo e($errors->first('content')); ?></strong>
                             </span>
                         <?php endif; ?>
+                        <input name="user_id" value="<?php echo e($sale->user->id); ?>" hidden>
+                        <input name="kode" value="<?php echo e($sale->kode); ?>" hidden>
                     </div>
                 </div>
           </div>
@@ -46,7 +48,7 @@
 
       <?php if(isset($order)): ?>
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">
+            <form class="form-horizontal" method="POST" action="<?php echo e(route('admin.custome.pembelian.invoice')); ?>">
                 <?php echo e(csrf_field()); ?>
 
                 <div class="form-group<?php echo e($errors->has('content') ? ' has-error' : ''); ?>">
@@ -60,6 +62,10 @@
                                 <strong><?php echo e($errors->first('content')); ?></strong>
                             </span>
                         <?php endif; ?>
+
+                        <input name="supplier_id" value="<?php echo e($order->supplier_id); ?>" hidden>
+                        <input name="kode" value="<?php echo e($order->kode); ?>" hidden>
+
                     </div>
                 </div>
           </div>

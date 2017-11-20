@@ -134,6 +134,18 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'TransactionCompletedController@penjualan'
 	]);
 
+	// custome sms invoice
+
+	Route::post('/send-custome-penjualan-invoice',[
+		'as'	=>	'custome.penjualan.invoice',
+		'uses'	=>	'SendCustomeInvoiceController@sendPenjualanInvoice'
+	]);
+
+	Route::post('/send-custome-pembelian-invoice',[
+		'as'	=>	'custome.pembelian.invoice',
+		'uses'	=>	'SendCustomeInvoiceController@sendPembelianInvoice'
+	]);
+
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){

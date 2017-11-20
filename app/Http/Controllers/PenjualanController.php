@@ -56,14 +56,19 @@ class PenjualanController extends Controller
         $penjualan = Penjualan::where('kode',$code)->first();
 
         if ($penjualan) {
-
-            $success = $penjualan->user->notify(new SendPenjualanInvoiceSmsNotification($penjualan));
+            try {
+            $penjualan->user->notify(new SendPenjualanInvoiceSmsNotification($penjualan));
 
            return redirect()->back()
                         ->with('message','SMS Penaggihan Telah Dikirim ke : '.$penjualan->user->phone)
                         ->with('status','SMS Telah Dikirim : '.$penjualan->user->fullName())
                         ->with('type','success');
-
+            } catch (\Exception $e) {
+                return redirect()->back()
+                        ->with('message',$e->getMessage())
+                        ->with('status','Something Wrong!')
+                        ->with('type','error');
+            }
         }else{
             return redirect()->back()
                             ->with('message','Kode Penjualan Tidak Ditemukan')

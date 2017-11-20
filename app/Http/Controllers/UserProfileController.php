@@ -76,7 +76,22 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $user = User::findOrFail($id);
+
+        try {
+            $user->update($input);
+            return redirect()->back()
+                            ->with('message','Data Berhasil Diupdate!')
+                            ->with('status','success')
+                            ->with('type','success');
+        } catch (Exception $e) {
+            return redirect()->back()
+                            ->with('message',$e->getMessage())
+                            ->with('status','Something Wrong!')
+                            ->with('type','error');
+        }
     }
 
     /**

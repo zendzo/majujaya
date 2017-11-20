@@ -34,7 +34,7 @@
                 <a href="<?php echo e(route('user.proses.transaksi.penjualan',$sale->kode)); ?>"><?php echo e($sale->kode); ?></a>
               <?php endif; ?>
             </td>
-            <td><?php echo e($sale->user->fullName()); ?></td>
+            <td><a href="<?php echo e(url('/user/profile',$sale->user->id)); ?>"><?php echo e($sale->user->fullName()); ?></a></td>
             <td><?php echo e($sale->tanggal_so->format('d/m/Y')); ?></td>
             <td><?php echo e($sale->tanggal_kirim->format('d/m/Y')); ?></td>
             
@@ -47,7 +47,7 @@
             
             <?php if(Auth::user()->role->id == "1"): ?>
             <td>
-              <a href="<?php echo e(route('admin.invoice.sms.pembelian', $sale->kode)); ?>" class="btn btn-info">
+              <a href="<?php echo e(route('admin.invoice.sms.penjualan', $sale->kode)); ?>" class="btn btn-info">
                 <i class="fa fa-fw fa-send"></i>
               </a>
               <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog">

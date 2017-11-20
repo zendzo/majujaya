@@ -82,9 +82,15 @@
             <button type="submit" class="btn btn-primary">
               <i class="fa fa-fw fa-plus-circle"></i>
             </button>
-            <a href="{{ route('admin.transaksi.penjualan.selesai', $sale->kode) }}" class="btn btn-success">
-              <i class="fa fa-fw fa-check"></i> Transaksi Penjualan Selesai
-            </a>
+            @if (Auth::user()->role == "1")
+              <a href="{{ route('admin.transaksi.penjualan.selesai', $sale->kode) }}" class="btn btn-success">
+                <i class="fa fa-fw fa-check"></i> Transaksi Penjualan Selesai
+              </a>
+            @else
+              <a href="{{ route('user.transaksi.penjualan.selesai', $sale->kode) }}" class="btn btn-success">
+                <i class="fa fa-fw fa-check"></i> Transaksi Penjualan Selesai
+              </a>
+            @endif
 
             @endif
         @endempty

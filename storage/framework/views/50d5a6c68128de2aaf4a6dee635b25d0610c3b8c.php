@@ -20,6 +20,16 @@
     $('#datepicker2').datepicker({
       format: 'dd/mm/yyyy'
     });
+
+    $('#closed-transaction').click(function(e){
+      e.preventDefault();
+      swal(
+        'Tidak Dizinkan',
+        'Transaksi Selesai Hanya Bisa Dibuka kembali oleh Admin!',
+        'error'
+      );
+    });
+
   });
 </script>
 <?php $__env->stopSection(); ?>

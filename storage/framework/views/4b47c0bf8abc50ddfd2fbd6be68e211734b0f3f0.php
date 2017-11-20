@@ -83,9 +83,15 @@
             <button type="submit" class="btn btn-primary">
               <i class="fa fa-fw fa-plus-circle"></i>
             </button>
-            <a href="<?php echo e(route('admin.transaksi.penjualan.selesai', $sale->kode)); ?>" class="btn btn-success">
-              <i class="fa fa-fw fa-check"></i> Transaksi Penjualan Selesai
-            </a>
+            <?php if(Auth::user()->role == "1"): ?>
+              <a href="<?php echo e(route('admin.transaksi.penjualan.selesai', $sale->kode)); ?>" class="btn btn-success">
+                <i class="fa fa-fw fa-check"></i> Transaksi Penjualan Selesai
+              </a>
+            <?php else: ?>
+              <a href="<?php echo e(route('user.transaksi.penjualan.selesai', $sale->kode)); ?>" class="btn btn-success">
+                <i class="fa fa-fw fa-check"></i> Transaksi Penjualan Selesai
+              </a>
+            <?php endif; ?>
 
             <?php endif; ?>
         <?php endif; ?>

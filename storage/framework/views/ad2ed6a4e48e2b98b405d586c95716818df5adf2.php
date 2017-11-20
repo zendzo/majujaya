@@ -60,6 +60,17 @@
             </span>
         <?php endif; ?>
       </div>
+
+      <div class="form-group<?php echo e($errors->has('phone') ? ' has-error' : ''); ?>">
+        <input id="phone" name="phone" class="form-control" value="<?php echo e(old('phone')); ?>" placeholder="Phone">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+
+        <?php if($errors->has('phone')): ?>
+            <span class="help-block">
+                <strong><?php echo e($errors->first('phone')); ?></strong>
+            </span>
+        <?php endif; ?>
+      </div>
       <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
         <input id="password" name="password" type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>

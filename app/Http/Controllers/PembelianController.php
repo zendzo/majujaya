@@ -70,12 +70,20 @@ class PembelianController extends Controller
 
         if ($pembelian) {
 
-            $success = $pembelian->supplier->notify(new SendPembelianInvoiceSmsNotification($pembelian));
+            try {
+            $pembelian->supplier->notify(new SendPembelianInvoiceSmsNotification($pembelian));
 
-           return redirect()->back()
-                        ->with('message','SMS Penaggihan Telah Dikirim ke : '.$pembelian->supplier->phone)
-                        ->with('status','SMS Telah Dikirim : '.$pembelian->supplier->nama)
-                        ->with('type','success');
+               return redirect()->back()
+                            ->with('message','SMS Penaggihan Telah Dikirim ke : '.$pembelian->supplier->phone)
+                            ->with('status','SMS Telah Dikirim : '.$pembelian->supplier->nama)
+                            ->with('type','success');
+            } catch (\Exception $e) {
+
+               return redirect()->back()
+                            ->with('message',$e->getMessage())
+                            ->with('status','Something Wrong!')
+                            ->with('type','error');
+            }
 
         }else{
             return redirect()->back()

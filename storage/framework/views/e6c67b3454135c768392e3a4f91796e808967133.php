@@ -22,7 +22,7 @@
       <td><?php echo e($sale->tanggal_kirim->format('d/m/Y')); ?></td>
       <td><?php echo e($sale->type->type); ?></td>
       <td><?php echo e($sale->gudang->nama); ?></td>
-      <td><?php echo e($sale->vendor->nama); ?></td>
+      
       <td><?php echo e($sale->sales->sum('total')); ?></td>
       <td><?php echo e($sale->bayar); ?></td>
       <td><?php echo e($sale->sales->sum('total') - $sale->bayar); ?></td>

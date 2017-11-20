@@ -19,7 +19,7 @@
       
       @isset ($sale)
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            <form class="form-horizontal" method="POST" action="{{ route('admin.custome.penjualan.invoice') }}">
                 {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                     <label for="content" class="col-md-4 control-label">Pesan</label>
@@ -32,6 +32,8 @@
                                 <strong>{{ $errors->first('content') }}</strong>
                             </span>
                         @endif
+                        <input name="user_id" value="{{ $sale->user->id }}" hidden>
+                        <input name="kode" value="{{ $sale->kode }}" hidden>
                     </div>
                 </div>
           </div>
@@ -45,7 +47,7 @@
 
       @isset ($order)
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            <form class="form-horizontal" method="POST" action="{{ route('admin.custome.pembelian.invoice') }}">
                 {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                     <label for="content" class="col-md-4 control-label">Pesan</label>
@@ -58,6 +60,10 @@
                                 <strong>{{ $errors->first('content') }}</strong>
                             </span>
                         @endif
+
+                        <input name="supplier_id" value="{{ $order->supplier_id }}" hidden>
+                        <input name="kode" value="{{ $order->kode }}" hidden>
+
                     </div>
                 </div>
           </div>

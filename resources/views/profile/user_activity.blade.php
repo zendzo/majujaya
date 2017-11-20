@@ -22,7 +22,7 @@
       <td>{{ $sale->tanggal_kirim->format('d/m/Y') }}</td>
       <td>{{ $sale->type->type }}</td>
       <td>{{ $sale->gudang->nama }}</td>
-      <td>{{ $sale->vendor->nama }}</td>
+      {{-- <td>{{ $sale->vendor->nama }}</td> --}}
       <td>{{ $sale->sales->sum('total') }}</td>
       <td>{{ $sale->bayar }}</td>
       <td>{{ $sale->sales->sum('total') - $sale->bayar }}</td>
