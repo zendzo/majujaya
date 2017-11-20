@@ -32,15 +32,6 @@
     </li>
     
 
-    <li class="treeview <?php echo e(active(['admin.vendor.*'])); ?>">
-			<a href="#">
-				<i class="fa fa-vine"></i>&nbsp;Vendor<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-			</a>
-		<ul class="treeview-menu">
-			<li class="<?php echo e(active('admin.vendor.*')); ?>">
-				<a href="<?php echo e(route('admin.vendor.index')); ?>"><i class="fa fa-ge fa-fw"></i>Angkutan</a>
-			</li>
-		</ul>
-		</li>
+    
   </ul>
 </li>

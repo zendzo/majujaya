@@ -58,13 +58,7 @@
             </div>
           </div>
 
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">Angkutan</label>
-
-          <div class="col-sm-10">
-             <input name="tanggal_po" type="text" class="form-control pull-right" value="<?php echo e($sale->vendor->nama); ?>" readonly="">
-          </div>
-        </div>
+        
 
         <div class="form-group">
             <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>

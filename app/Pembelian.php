@@ -14,7 +14,7 @@ class Pembelian extends Model
 							'tanggal_po',
 							'tanggal_kirim',
 							'gudang_id',
-							'vendor_id',
+							// 'vendor_id',
 							'keterangan',
 							'bayar'
 						];
@@ -47,10 +47,10 @@ class Pembelian extends Model
 		return $this->belongsTo('App\Gudang');
 	}
 
-	public function vendor()
-	{
-		return $this->belongsTo('App\Vendor');
-	}
+	// public function vendor()
+	// {
+	// 	return $this->belongsTo('App\Vendor');
+	// }
 
 	public function orders()
 	{

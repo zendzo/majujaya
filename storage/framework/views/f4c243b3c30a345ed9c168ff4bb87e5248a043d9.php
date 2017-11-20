@@ -36,7 +36,7 @@
                   <th>Tanggal Penjualan</th>
                   <th>Tanggal Pengiriman</th>
                   <th>Dari Gudang</th>
-                  <th>Layanan Angkutan</th>
+                  
                   <th>Keterangan</th>
                 </tr>
                 </thead>
@@ -52,7 +52,7 @@
                       <td><?php echo e($sale->tanggal_so->format('d/m/Y')); ?></td>
                       <td><?php echo e($sale->tanggal_kirim->format('d/m/Y')); ?></td>
                       <td><?php echo e($sale->gudang->nama); ?></td>
-                      <td><?php echo e($sale->vendor->nama); ?></td>
+                      
                       <td><?php echo e($sale->keterangan); ?></td>
                    </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

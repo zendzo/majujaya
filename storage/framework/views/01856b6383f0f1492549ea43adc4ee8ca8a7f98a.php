@@ -136,7 +136,7 @@
               <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
               <div class="col-sm-10">
-                 <textarea class="form-control" name="keterangan"></textarea>
+                 <textarea class="form-control" name="keterangan" required></textarea>
             </div>
           </div>
 

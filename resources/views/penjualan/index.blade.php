@@ -163,6 +163,7 @@
                   </div>
                 </div>
 
+                {{-- form_partials.delivery_options --}}
                 @include('form_partials.delivery_options')
                 
                 <div class="form-group">

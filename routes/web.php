@@ -78,7 +78,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 
 	Route::resource('truck','TruckController');
 
-	Route::resource('vendor','VendorController');
+	// Route::resource('vendor','VendorController');
 
 	Route::resource('satuan','SatuanController');
 

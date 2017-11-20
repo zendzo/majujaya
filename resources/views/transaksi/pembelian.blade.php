@@ -38,7 +38,7 @@
                   <th>Tanggal Pembelian</th>
                   <th>Tanggal Pengiriman</th>
                   <th>Gudang</th>
-                  <th>Layanan Angkutan</th>
+                  {{-- <th>Layanan Angkutan</th> --}}
                   <th>Keterangan</th>
                 </tr>
                 </thead>
@@ -54,7 +54,7 @@
                       <td>{{ $order->tanggal_po->format('d/m/Y') }}</td>
                       <td>{{ $order->tanggal_kirim->format('d/m/Y') }}</td>
                       <td>{{ $order->gudang->nama }}</td>
-                      <td>{{ $order->vendor->nama }}</td>
+                      {{-- <td>{{ $order->vendor->nama }}</td> --}}
                       <td>{{ $order->keterangan }}</td>
                    </tr>
                   @endforeach

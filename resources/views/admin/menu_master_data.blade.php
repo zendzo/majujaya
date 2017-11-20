@@ -34,7 +34,7 @@
     	<a href="{{ route('admin.truck.index') }}"><i class="fa fa-truck fa-flip-horizontal fa-fw"></i>Truck</a>
     </li> --}}
 
-    <li class="treeview {{ active(['admin.vendor.*']) }}">
+    {{-- <li class="treeview {{ active(['admin.vendor.*']) }}">
 			<a href="#">
 				<i class="fa fa-vine"></i>&nbsp;Vendor<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 			</a>
@@ -43,6 +43,6 @@
 				<a href="{{ route('admin.vendor.index') }}"><i class="fa fa-ge fa-fw"></i>Angkutan</a>
 			</li>
 		</ul>
-		</li>
+	</li> --}}
   </ul>
 </li>

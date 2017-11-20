@@ -14,7 +14,7 @@ class Penjualan extends Model
 		'tanggal_so',
 		'tanggal_kirim',
 		'gudang_id',
-		'vendor_id',
+		// 'vendor_id',
 		'keterangan',
 		'bayar'
     ];
@@ -46,10 +46,10 @@ class Penjualan extends Model
 		return $this->belongsTo('App\Gudang');
 	}
 
-	public function vendor()
-	{
-		return $this->belongsTo('App\Vendor');
-	}
+	// public function vendor()
+	// {
+	// 	return $this->belongsTo('App\Vendor');
+	// }
 
 	public function sales()
 	{

@@ -13,7 +13,7 @@
         <th>Tanggal Pengiriman</th>
         
         <th>Dari Gudang</th>
-        <th>Layanan Angkutan</th>
+        
         
         <th>Total</th>
         <th>Pembayaran</th>
@@ -39,17 +39,23 @@
             <td><?php echo e($sale->tanggal_kirim->format('d/m/Y')); ?></td>
             
             <td><?php echo e($sale->gudang->nama); ?></td>
-            <td><?php echo e($sale->vendor->nama); ?></td>
+            
             
             <td><?php echo e($sale->sales->sum('total')); ?></td>
             <td><?php echo e($sale->bayar); ?></td>
             <td><?php echo e($sale->sales->sum('total') - $sale->bayar); ?></td>
             
             <?php if(Auth::user()->role->id == "1"): ?>
-              <td>
+            <td>
               <a href="<?php echo e(route('admin.invoice.sms.pembelian', $sale->kode)); ?>" class="btn btn-info">
                 <i class="fa fa-fw fa-send"></i>
               </a>
+              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog">
+                <i class="fa fa-envelope"></i>
+              </a>
+
+              <?php echo $__env->make('form_partials.sms_modal_dialog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
             </td>
             <?php endif; ?>
          </tr>

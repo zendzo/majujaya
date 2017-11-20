@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
   <label for="inputEmail3" class="col-sm-2 control-label">Angkutan</label>
 
   <div class="col-sm-10">
@@ -21,4 +21,4 @@
         @endforeach
     </select>
   </div>
-</div>
+</div> --}}

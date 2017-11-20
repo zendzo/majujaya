@@ -13,7 +13,7 @@
         <th>Tanggal Pengiriman</th>
         {{-- <th>Tipe Penjualan</th> --}}
         <th>Dari Gudang</th>
-        <th>Layanan Angkutan</th>
+        {{-- <th>Layanan Angkutan</th> --}}
         {{-- <th>Keterangan</th> --}}
         <th>Total</th>
         <th>Pembayaran</th>
@@ -39,17 +39,23 @@
             <td>{{ $order->tanggal_kirim->format('d/m/Y') }}</td>
             {{-- <td>{{ $order->type->type }}</td> --}}
             <td>{{ $order->gudang->nama }}</td>
-            <td>{{ $order->vendor->nama }}</td>
+            {{-- <td>{{ $order->vendor->nama }}</td> --}}
             {{-- <td>{{ $order->keterangan }}</td> --}}
             <td>{{ $order->orders->sum('total') }}</td>
             <td>{{ $order->bayar }}</td>
             <td>{{ $order->orders->sum('total') - $order->bayar }}</td>
             {{-- send invoice sms --}}
             @if (Auth::user()->role->id == "1")
-              <td>
+            <td>
               <a href="{{ route('admin.invoice.sms.pembelian', $order->kode) }}" class="btn btn-info">
                 <i class="fa fa-fw fa-send"></i>
               </a>
+              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog">
+                <i class="fa fa-envelope"></i>
+              </a>
+
+              @include('form_partials.sms_modal_dialog')
+
             </td>
             @endif
          </tr>

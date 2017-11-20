@@ -24,7 +24,7 @@ class PembeliansTableSeeder extends Seeder
 				'tanggal_po'	=> $faker->date('m/d/Y','now'),
 				'tanggal_kirim'	=> $faker->date('m/d/Y','now'),
 				'gudang_id'	=> rand(1,2),
-				'vendor_id'	=> rand(1,5),
+				// 'vendor_id'	=> rand(1,5),
                 'keterangan' => $faker->sentence
         	]);
         }
