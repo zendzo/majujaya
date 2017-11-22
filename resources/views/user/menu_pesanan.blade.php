@@ -11,8 +11,8 @@
     <li class="{{ active('user.pembayaran.pembelian') }}">
     	<a href="{{ route('user.pembayaran.pembelian') }}"><i class="fa fa-credit-card"></i>Pembayaran</a>
     </li>
-    <li class="{{ active(['user.revisi.pembelian.completed']) }}">
+    {{-- <li class="{{ active(['user.revisi.pembelian.completed']) }}">
     	<a href="{{ route('user.revisi.pembelian.completed') }}"><i class="fa fa-code-fork fa-rotate-180 fa-fw"></i>Revisi</a>
-    </li>
+    </li> --}}
   </ul>
 </li>

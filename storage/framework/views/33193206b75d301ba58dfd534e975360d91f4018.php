@@ -11,8 +11,6 @@
     <li class="<?php echo e(active('user.pembayaran.pembelian')); ?>">
     	<a href="<?php echo e(route('user.pembayaran.pembelian')); ?>"><i class="fa fa-credit-card"></i>Pembayaran</a>
     </li>
-    <li class="<?php echo e(active(['user.revisi.pembelian.completed'])); ?>">
-    	<a href="<?php echo e(route('user.revisi.pembelian.completed')); ?>"><i class="fa fa-code-fork fa-rotate-180 fa-fw"></i>Revisi</a>
-    </li>
+    
   </ul>
 </li>

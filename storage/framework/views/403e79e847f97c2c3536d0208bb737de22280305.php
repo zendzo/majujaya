@@ -5,8 +5,8 @@
   <i class="fa fa-angle-left pull-right"></i>
 </a>
   <ul class="treeview-menu">
-    <li><a href="#"><i class="fa fa-check"></i>Konfirmasi</a></li>
-    <li><a href="#"><i class="fa fa-credit-card"></i>Pembayaran</a></li>
-    <li><a href="#"><i class="fa fa-thumbs-o-up"></i>Persetujuan</a></li>
+    <li><a href="#"><i class="fa fa-check"></i>Konfirmasi Pesanan</a></li>
+    
+    
   </ul>
 </li>

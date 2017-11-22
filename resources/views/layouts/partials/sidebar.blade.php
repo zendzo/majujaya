@@ -49,7 +49,7 @@
         {{-- @include('user.menu_stock') --}}
         {{-- @include('user.menu_penjualan') --}}
         @include('user.menu_pesanan')
-        @include('user.menu_laporan')
+        {{-- @include('user.menu_laporan') --}}
       @endif
     </ul><!-- /.sidebar-menu -->
   </section>

@@ -1,4 +1,11 @@
-<div class="modal fade" id="smsModalDialog" role="dialog">
+<?php if(isset($sale)): ?>
+    <div class="modal fade" id="smsModalDialog-<?php echo e($sale->id); ?>" role="dialog">
+<?php endif; ?>
+
+<?php if(isset($order)): ?>
+    <div class="modal fade" id="smsModalDialog-<?php echo e($order->id); ?>" role="dialog">
+<?php endif; ?>
+
   <div class="modal-dialog">
   
     <!-- Modal content-->

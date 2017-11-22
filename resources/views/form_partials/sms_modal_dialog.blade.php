@@ -1,4 +1,11 @@
-<div class="modal fade" id="smsModalDialog" role="dialog">
+@isset ($sale)
+    <div class="modal fade" id="smsModalDialog-{{ $sale->id }}" role="dialog">
+@endisset
+
+@isset ($order)
+    <div class="modal fade" id="smsModalDialog-{{ $order->id }}" role="dialog">
+@endisset
+
   <div class="modal-dialog">
   
     <!-- Modal content-->

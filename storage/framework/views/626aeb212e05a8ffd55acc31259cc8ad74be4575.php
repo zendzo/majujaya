@@ -47,14 +47,19 @@
             
             <?php if(Auth::user()->role->id == "1"): ?>
             <td>
-              <a href="<?php echo e(route('admin.invoice.sms.pembelian', $order->kode)); ?>" class="btn btn-info">
+              <a href="<?php echo e(route('admin.invoice.sms.penjualan', $order->kode)); ?>" class="btn btn-info">
                 <i class="fa fa-fw fa-send"></i>
               </a>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog">
+              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog-<?php echo e($order->id); ?>">
                 <i class="fa fa-envelope"></i>
+              </a>
+              <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#paymentModalDialog-<?php echo e($order->id); ?>">
+                <i class="fa fa-credit-card"></i>
               </a>
 
               <?php echo $__env->make('form_partials.sms_modal_dialog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+              <?php echo $__env->make('form_partials.payment_modal_dialog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
             </td>
             <?php endif; ?>
