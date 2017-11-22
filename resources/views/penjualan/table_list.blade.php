@@ -53,8 +53,13 @@
               <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog">
                 <i class="fa fa-envelope"></i>
               </a>
+              <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#paymentModalDialog">
+                <i class="fa fa-credit-card"></i>
+              </a>
 
               @include('form_partials.sms_modal_dialog')
+
+              @include('form_partials.payment_modal_dialog')
 
             </td>
             @endif
