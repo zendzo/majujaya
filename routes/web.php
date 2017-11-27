@@ -146,6 +146,42 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'SendCustomeInvoiceController@sendPembelianInvoice'
 	]);
 
+	// Konfirm pembelian by user
+
+	Route::get('/konfirmasi-pembelian',[
+		'as'	=> 'konfirmasi.pembelian',
+		'uses'	=>	'ConfirmPesananController@index'
+	]);
+
+	Route::get('/konfirmasi-pembelian/{kode}',[
+		'as'	=>	'konfirmasi.pesanan',
+		'uses'	=>	'ConfirmPesananController@update'
+	]);
+
+	// inflow dan outflow barang gudang
+
+	Route::get('/gudang/outflow/{id}',[
+		'as'	=>	'gudang.outflow',
+		'uses'	=>	'WarehouseController@outflow'
+	]);
+
+	Route::get('/gudang/inflow/{id}',[
+		'as'	=>	'gudang.inflow',
+		'uses'	=>	'WarehouseController@inflow'
+	]);
+
+	// inflow dan outflow gudang
+
+	Route::get('/gudang/list/outflow',[
+		'as'	=>	'gudang.list.outflow',
+		'uses'	=>	'WarehouseController@gudangListOutFlow'
+	]);
+
+	Route::get('/gudang/list/inflow',[
+		'as'	=>	'gudang.list.inflow',
+		'uses'	=>	'WarehouseController@gudangListInFlow'
+	]);
+
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){

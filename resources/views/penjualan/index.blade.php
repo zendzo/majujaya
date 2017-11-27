@@ -76,9 +76,13 @@
                   <div class="col-sm-10">
                      @if (Auth::user()->role->id == "1")
                        <select name="user_id" class="form-control select2">
+                        <input type="hidden" name="confirmed_by_admin" value="1">
+                        <input type="hidden" name="purchased_by" value="{{ Auth::id() }}">
                     @else
                       <input class="form-control" value="{{ Auth::user()->fullName() }}" readonly>
                       <input type="hidden" name="user_id" class="form-control" value="{{ Auth::id() }}">
+                      <input type="hidden" name="confirmed_by_admin" value="0">
+                      <input type="hidden" name="purchased_by" value="{{ Auth::id() }}">
                     @endif
 	                  </select>
                   </div>
@@ -170,7 +174,7 @@
                   <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                   <div class="col-sm-10">
-                     <textarea class="form-control" name="keterangan"></textarea>
+                     <textarea class="form-control" name="keterangan" required=""></textarea>
                 </div>
               </div>
 

@@ -75,9 +75,13 @@
                   <div class="col-sm-10">
                      <?php if(Auth::user()->role->id == "1"): ?>
                        <select name="user_id" class="form-control select2">
+                        <input type="hidden" name="confirmed_by_admin" value="1">
+                        <input type="hidden" name="purchased_by" value="<?php echo e(Auth::id()); ?>">
                     <?php else: ?>
                       <input class="form-control" value="<?php echo e(Auth::user()->fullName()); ?>" readonly>
                       <input type="hidden" name="user_id" class="form-control" value="<?php echo e(Auth::id()); ?>">
+                      <input type="hidden" name="confirmed_by_admin" value="0">
+                      <input type="hidden" name="purchased_by" value="<?php echo e(Auth::id()); ?>">
                     <?php endif; ?>
 	                  </select>
                   </div>
@@ -169,7 +173,7 @@
                   <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                   <div class="col-sm-10">
-                     <textarea class="form-control" name="keterangan"></textarea>
+                     <textarea class="form-control" name="keterangan" required=""></textarea>
                 </div>
               </div>
 

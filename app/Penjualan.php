@@ -16,7 +16,9 @@ class Penjualan extends Model
 		'gudang_id',
 		// 'vendor_id',
 		'keterangan',
-		'bayar'
+		'bayar',
+		'confirmed_by_admin',
+		'purchased_by'
     ];
 
     protected $dates = ['tanggal_so','tanggal_kirim'];

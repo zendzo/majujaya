@@ -9,7 +9,6 @@
       <tr>
         <th>Kode Nota</th>
         <th>Pelanggan</th>
-        <th>Dipes. Oleh :</th>
         <th>Tanggal Penjualan</th>
         <th>Tanggal Pengiriman</th>
         
@@ -20,7 +19,7 @@
         <th>Pembayaran</th>
         <th>Sisa Pembayaran</th>
         <?php if(Auth::user()->role->id == "1"): ?>
-         <th>Taggihan</th>
+         <th>Konfirmasi</th>
         <?php endif; ?>
       </tr>
       </thead>
@@ -36,13 +35,6 @@
               <?php endif; ?>
             </td>
             <td><a href="<?php echo e(url('/user/profile',$sale->user->id)); ?>"><?php echo e($sale->user->fullName()); ?></a></td>
-            <td>
-              <?php if($sale->purchased_by === 1): ?>
-                <b>Admin</b>
-              <?php else: ?>
-                <b>User</b>
-              <?php endif; ?>
-            </td>
             <td><?php echo e($sale->tanggal_so->format('d/m/Y')); ?></td>
             <td><?php echo e($sale->tanggal_kirim->format('d/m/Y')); ?></td>
             
@@ -55,20 +47,9 @@
             
             <?php if(Auth::user()->role->id == "1"): ?>
             <td>
-              <a href="<?php echo e(route('admin.invoice.sms.penjualan', $sale->kode)); ?>" class="btn btn-info">
-                <i class="fa fa-fw fa-send"></i>
+              <a href="<?php echo e(route('admin.konfirmasi.pesanan', $sale->id)); ?>" class="btn btn-info">
+                <i class="fa fa-fw fa-check-square-o"></i>
               </a>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog-<?php echo e($sale->id); ?>">
-                <i class="fa fa-envelope"></i>
-              </a>
-              <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#paymentModalDialog-<?php echo e($sale->id); ?>">
-                <i class="fa fa-credit-card"></i>
-              </a>
-
-              <?php echo $__env->make('form_partials.sms_modal_dialog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-              <?php echo $__env->make('form_partials.payment_modal_dialog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
             </td>
             <?php endif; ?>
          </tr>

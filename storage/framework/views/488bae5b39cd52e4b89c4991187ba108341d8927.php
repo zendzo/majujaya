@@ -19,14 +19,11 @@
         <th>Total</th>
         <th>Pembayaran</th>
         <th>Sisa Pembayaran</th>
-        <?php if(Auth::user()->role->id == "1"): ?>
-         <th>Taggihan</th>
-        <?php endif; ?>
       </tr>
       </thead>
 
       <tbody>
-        <?php $__currentLoopData = $sales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $data->penjualans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
          <tr>
             <td>
               <?php if(Auth::user()->role->id == "1"): ?>
@@ -52,25 +49,6 @@
             <td><?php echo e($sale->sales->sum('total')); ?></td>
             <td><?php echo e($sale->bayar); ?></td>
             <td><?php echo e($sale->sales->sum('total') - $sale->bayar); ?></td>
-            
-            <?php if(Auth::user()->role->id == "1"): ?>
-            <td>
-              <a href="<?php echo e(route('admin.invoice.sms.penjualan', $sale->kode)); ?>" class="btn btn-info">
-                <i class="fa fa-fw fa-send"></i>
-              </a>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog-<?php echo e($sale->id); ?>">
-                <i class="fa fa-envelope"></i>
-              </a>
-              <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#paymentModalDialog-<?php echo e($sale->id); ?>">
-                <i class="fa fa-credit-card"></i>
-              </a>
-
-              <?php echo $__env->make('form_partials.sms_modal_dialog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-              <?php echo $__env->make('form_partials.payment_modal_dialog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-            </td>
-            <?php endif; ?>
          </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>

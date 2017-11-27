@@ -23,7 +23,8 @@ class PenjualansTableSeeder extends Seeder
 				'penjualan_type_id'	=> rand(1,3),
 				'tanggal_so'	=> $faker->date('m/d/Y','now'),
 				'tanggal_kirim'	=> $faker->date('m/d/Y','now'),
-				'gudang_id'	=> rand(1,2),
+                'gudang_id' => rand(1,2),
+				'confirmed_by_admin'	=> true,
 				// 'vendor_id'	=> rand(1,5),
                 'keterangan' => $faker->sentence
         	]);

@@ -115,4 +115,40 @@ class WarehouseController extends Controller
                     ->with('type','success')
                     ->with('status','success');
     }
+
+    public function gudangListOutFlow()
+    {
+        $page_title = "Daftar Gudang";
+
+        $inflow = Gudang::all();
+
+        return view('gudang.list_gudang_outflow',compact(['inflow','page_title']));
+    }
+
+    public function gudangListInFlow()
+    {
+        $page_title = "Daftar Gudang";
+
+        $inflow = Gudang::all();
+
+        return view('gudang.list_gudang_inflow',compact(['inflow','page_title']));
+    }
+
+    public function inflow($id)
+    {
+        $page_title = "Inflow Gudang";
+
+        $data = Gudang::findOrFail($id);
+
+        return view('gudang.inflow',compact(['data','page_title']));
+    }
+
+    public function outflow($id)
+    {
+        $page_title = "Outflow Gudang";
+
+        $data = Gudang::findOrFail($id);
+
+        return view('gudang.outflow',compact(['data','page_title']));
+    }
 }

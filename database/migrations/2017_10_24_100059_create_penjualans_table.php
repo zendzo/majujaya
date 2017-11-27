@@ -25,6 +25,8 @@ class CreatePenjualansTable extends Migration
             $table->string('keterangan');
             $table->integer('bayar')->nullable();
             $table->boolean('completed')->default(false)->nullable();
+            $table->boolean('confirmed_by_admin')->nullable();
+            $table->integer('purchased_by')->default(1)->nullable();
             $table->timestamps();
         });
     }

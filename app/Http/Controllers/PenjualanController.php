@@ -30,7 +30,7 @@ class PenjualanController extends Controller
         $page_title = "Pembayaran Penjualan";
 
         if (Auth::user()->role->id == "1") {
-            $sales = Penjualan::orderBy('id','DESC')->get();
+            $sales = Penjualan::where('confirmed_by_admin',true)->orderBy('id','DESC')->get();
         }else{
             $sales = Penjualan::where('user_id',Auth::id())->orderBy('id','DESC')->get();
         }
