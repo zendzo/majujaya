@@ -182,6 +182,18 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'WarehouseController@gudangListInFlow'
 	]);
 
+	//payment
+
+	Route::post('bayar/nota/pembelian',[
+		'as'	=> 'bayar.nota.pembelian',
+		'uses'	=> 'PembayaranController@pembelian'
+	]);
+
+	Route::post('bayar/nota/penjualan',[
+		'as'	=> 'bayar.nota.penjualan',
+		'uses'	=> 'PembayaranController@penjualan'
+	]);
+
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){

@@ -54,22 +54,27 @@
             <td>{{ $sale->sales->sum('total') - $sale->bayar }}</td>
             {{-- send invoice sms --}}
             @if (Auth::user()->role->id == "1")
-            <td>
-              <a href="{{ route('admin.invoice.sms.penjualan', $sale->kode) }}" class="btn btn-info">
-                <i class="fa fa-fw fa-send"></i>
-              </a>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog-{{ $sale->id }}">
-                <i class="fa fa-envelope"></i>
-              </a>
-              <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#paymentModalDialog-{{ $sale->id }}">
-                <i class="fa fa-credit-card"></i>
-              </a>
+              @if ($sale->bayar === $sale->sales->sum('total'))
+                <td><a href="#" class="btn btn-info dissabled" style="width: 100%;">
+                  <i class="fa fa-fw fa-check-circle-o"></i> LUNAS
+                </a></td>
+              @else
+                <td>
+                  <a href="{{ route('admin.invoice.sms.penjualan', $sale->kode) }}" class="btn btn-info">
+                    <i class="fa fa-fw fa-send"></i>
+                  </a>
+                  <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#smsModalDialog-{{ $sale->id }}">
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                  <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#paymentModalDialog-{{ $sale->id }}">
+                    <i class="fa fa-credit-card"></i>
+                  </a>
 
-              @include('form_partials.sms_modal_dialog')
+                  @include('form_partials.sms_modal_dialog')
 
-              @include('form_partials.payment_modal_dialog')
-
-            </td>
+                  @include('form_partials.payment_modal_dialog')
+              </td>
+              @endif
             @endif
          </tr>
         @endforeach

@@ -28,31 +28,17 @@
       
       <?php if(isset($sale)): ?>
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="<?php echo e(route('admin.custome.penjualan.invoice')); ?>">
+            <form class="form-horizontal" method="POST" action="<?php echo e(route('admin.bayar.nota.penjualan')); ?>">
                 <?php echo e(csrf_field()); ?>
 
 
-                <div class="form-group<?php echo e($errors->has('total') ? ' has-error' : ''); ?>">
-                    <label for="kode" class="col-sm-4 control-label">Total Pem.: </label>
+                <div class="form-group<?php echo e($errors->has('bayar') ? ' has-error' : ''); ?>">
+                    <label for="bayar" class="col-sm-4 control-label">Jumlah Pem.: </label>
 
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="total" disabled="" value="<?php echo e($sale->sales->sum('total')); ?>">
-                    </div>
-                </div>
-
-                <div class="form-group<?php echo e($errors->has('pembayaran') ? ' has-error' : ''); ?>">
-                    <label for="kode" class="col-sm-4 control-label">Sis Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="sisa" disabled value="<?php echo e($sale->sales->sum('total') - $sale->bayar); ?>">
-                    </div>
-                </div>
-
-                <div class="form-group<?php echo e($errors->has('pembayaran') ? ' has-error' : ''); ?>">
-                    <label for="kode" class="col-sm-4 control-label">Jumlah Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="pembayaran" required="">
+                      <input class="form-control" type="text" name="bayar" required="">
+                      <input type="text" name="kode" required="" value="<?php echo e($sale->kode); ?>" hidden="">
+                      <input type="text" name="id" required="" value="<?php echo e($sale->id); ?>" hidden="">
                     </div>
                 </div>
           </div>
@@ -61,36 +47,21 @@
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </form>
           </div>
-        </div>
       <?php endif; ?>
 
       <?php if(isset($order)): ?>
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="<?php echo e(route('admin.custome.penjualan.invoice')); ?>">
+            <form class="form-horizontal" method="POST" action="<?php echo e(route('admin.bayar.nota.pembelian')); ?>">
                 <?php echo e(csrf_field()); ?>
 
 
-                <div class="form-group<?php echo e($errors->has('total') ? ' has-error' : ''); ?>">
-                    <label for="kode" class="col-sm-4 control-label">Total Pem.: </label>
+                <div class="form-group<?php echo e($errors->has('bayar') ? ' has-error' : ''); ?>">
+                    <label for="bayar" class="col-sm-4 control-label">Jumlah Pem.: </label>
 
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="total" disabled="" value="<?php echo e($order->orders->sum('total')); ?>">
-                    </div>
-                </div>
-
-                <div class="form-group<?php echo e($errors->has('pembayaran') ? ' has-error' : ''); ?>">
-                    <label for="kode" class="col-sm-4 control-label">Sis Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="sisa" disabled value="<?php echo e($order->orders->sum('total') - $order->bayar); ?>">
-                    </div>
-                </div>
-
-                <div class="form-group<?php echo e($errors->has('pembayaran') ? ' has-error' : ''); ?>">
-                    <label for="kode" class="col-sm-4 control-label">Jumlah Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="pembayaran" required="">
+                      <input class="form-control" type="text" name="bayar" required="">
+                      <input type="text" name="kode" required="" value="<?php echo e($order->kode); ?>" hidden="">
+                      <input type="text" name="id" required="" value="<?php echo e($order->id); ?>" hidden="">
                     </div>
                 </div>
           </div>
@@ -99,7 +70,6 @@
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </form>
           </div>
-        </div>
       <?php endif; ?>
     
   </div>

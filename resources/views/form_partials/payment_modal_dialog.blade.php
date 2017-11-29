@@ -26,30 +26,16 @@
       
       @isset ($sale)
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="{{ route('admin.custome.penjualan.invoice') }}">
+            <form class="form-horizontal" method="POST" action="{{ route('admin.bayar.nota.penjualan') }}">
                 {{ csrf_field() }}
 
-                <div class="form-group{{ $errors->has('total') ? ' has-error' : '' }}">
-                    <label for="kode" class="col-sm-4 control-label">Total Pem.: </label>
+                <div class="form-group{{ $errors->has('bayar') ? ' has-error' : '' }}">
+                    <label for="bayar" class="col-sm-4 control-label">Jumlah Pem.: </label>
 
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="total" disabled="" value="{{ $sale->sales->sum('total') }}">
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('pembayaran') ? ' has-error' : '' }}">
-                    <label for="kode" class="col-sm-4 control-label">Sis Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="sisa" disabled value="{{ $sale->sales->sum('total') - $sale->bayar }}">
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('pembayaran') ? ' has-error' : '' }}">
-                    <label for="kode" class="col-sm-4 control-label">Jumlah Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="pembayaran" required="">
+                      <input class="form-control" type="text" name="bayar" required="">
+                      <input type="text" name="kode" required="" value="{{ $sale->kode }}" hidden="">
+                      <input type="text" name="id" required="" value="{{ $sale->id }}" hidden="">
                     </div>
                 </div>
           </div>
@@ -58,35 +44,20 @@
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </form>
           </div>
-        </div>
       @endisset
 
       @isset ($order)
         <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="{{ route('admin.custome.penjualan.invoice') }}">
+            <form class="form-horizontal" method="POST" action="{{ route('admin.bayar.nota.pembelian') }}">
                 {{ csrf_field() }}
 
-                <div class="form-group{{ $errors->has('total') ? ' has-error' : '' }}">
-                    <label for="kode" class="col-sm-4 control-label">Total Pem.: </label>
+                <div class="form-group{{ $errors->has('bayar') ? ' has-error' : '' }}">
+                    <label for="bayar" class="col-sm-4 control-label">Jumlah Pem.: </label>
 
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="total" disabled="" value="{{ $order->orders->sum('total') }}">
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('pembayaran') ? ' has-error' : '' }}">
-                    <label for="kode" class="col-sm-4 control-label">Sis Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="sisa" disabled value="{{ $order->orders->sum('total') - $order->bayar }}">
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('pembayaran') ? ' has-error' : '' }}">
-                    <label for="kode" class="col-sm-4 control-label">Jumlah Pem.: </label>
-
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="pembayaran" required="">
+                      <input class="form-control" type="text" name="bayar" required="">
+                      <input type="text" name="kode" required="" value="{{ $order->kode }}" hidden="">
+                      <input type="text" name="id" required="" value="{{ $order->id }}" hidden="">
                     </div>
                 </div>
           </div>
@@ -95,7 +66,6 @@
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </form>
           </div>
-        </div>
       @endisset
     
   </div>
