@@ -11,6 +11,8 @@
         <th>Supplier</th>
         <th>Tanggal Penjualan</th>
         <th>Tanggal Pengiriman</th>
+        <th>Tanggal Remainder</th>
+        <th>SMS Remainder</th>
         
         <th>Dari Gudang</th>
         
@@ -37,6 +39,14 @@
             <td><?php echo e($order->supplier->nama); ?></td>
             <td><?php echo e($order->tanggal_po->format('d/m/Y')); ?></td>
             <td><?php echo e($order->tanggal_kirim->format('d/m/Y')); ?></td>
+            <td><?php echo e($order->tanggal_remainder->format('d/m/Y')); ?></td>
+            <td>
+              <?php if($order->remainder_sent): ?>
+                <a class="btn btn-info" href="#"><i class="fa fa-fw fa-check"></i></a>
+              <?php else: ?>
+                <a class="btn btn-danger" href="#"><i class="fa fa-fw fa-ban"></i></a>
+              <?php endif; ?>
+            </td>
             
             <td><?php echo e($order->gudang->nama); ?></td>
             

@@ -30,8 +30,8 @@
                       <td>{{ $item->kode }}</td>
                       <td>{{ $item->deskripsi }}</td>
                       <td>
-                          <span class="label label-{{ statusClass($item->status)}}">
-                            {{ status($item->status) }}
+                          <span class="label label-{{ statusClass($unit->status)}}">
+                            {{ status($unit->status) }}
                           </span>
                       </td>
 

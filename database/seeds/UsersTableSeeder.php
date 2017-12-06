@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
                 'first_name'    =>  $faker->firstName,
                 'last_name'     =>  $faker->lastName,
                 'email'         =>  $faker->safeEmail,
-                'phone'         =>  $faker->phoneNumber,
+                'phone'         =>  env('CUSTOMER_TEST_PHONENUMBER'),
                 'password'      =>  'adminadmin',
                 'role_id'       =>  2
             ]);

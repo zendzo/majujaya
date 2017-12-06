@@ -20,7 +20,7 @@ class SuppliersTableSeeder extends Seeder
     		Supplier::create([
     			'nama'		=> $faker->company,
 				'alamat'		=> $faker->address,
-				'phone'		=> $faker->phoneNumber,
+				'phone'		=> env('CUSTOMER_TEST_PHONENUMBER'),
 				'npwp'		=> rand(10000,99999),
 				'status'		=> rand(0,1),
 				'keterangan'		=> $faker->sentence

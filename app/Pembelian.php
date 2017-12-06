@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pembelian extends Model
 {
+	// const REMAINDER_DATE = Carbon::now()->addDays(config('settings.remainder_days'));
+
+	// protected $attributes = [
+	// 	'tanggal_remainder'	=>	self::REMAINDER_DATE,
+	// ];
+
     protected $fillable = ['supplier_id',
 							'kode',
 							'pembelian_type_id',
@@ -19,7 +25,7 @@ class Pembelian extends Model
 							'bayar'
 						];
 
-	protected $dates = ['tanggal_po','tanggal_kirim'];
+	protected $dates = ['tanggal_po','tanggal_kirim','tanggal_remainder'];
 
 
 	public function setTanggalPoAttribute($value)

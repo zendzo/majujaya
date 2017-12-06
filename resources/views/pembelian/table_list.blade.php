@@ -11,6 +11,8 @@
         <th>Supplier</th>
         <th>Tanggal Penjualan</th>
         <th>Tanggal Pengiriman</th>
+        <th>Tanggal Remainder</th>
+        <th>SMS Remainder</th>
         {{-- <th>Tipe Penjualan</th> --}}
         <th>Dari Gudang</th>
         {{-- <th>Layanan Angkutan</th> --}}
@@ -37,6 +39,14 @@
             <td>{{ $order->supplier->nama }}</td>
             <td>{{ $order->tanggal_po->format('d/m/Y') }}</td>
             <td>{{ $order->tanggal_kirim->format('d/m/Y') }}</td>
+            <td>{{ $order->tanggal_remainder->format('d/m/Y') }}</td>
+            <td>
+              @if ($order->remainder_sent)
+                <a class="btn btn-info" href="#"><i class="fa fa-fw fa-check"></i></a>
+              @else
+                <a class="btn btn-danger" href="#"><i class="fa fa-fw fa-ban"></i></a>
+              @endif
+            </td>
             {{-- <td>{{ $order->type->type }}</td> --}}
             <td>{{ $order->gudang->nama }}</td>
             {{-- <td>{{ $order->vendor->nama }}</td> --}}

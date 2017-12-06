@@ -12,6 +12,8 @@
         <th>Dipes. Oleh :</th>
         <th>Tanggal Penjualan</th>
         <th>Tanggal Pengiriman</th>
+        <th>Tanggal Remainder</th>
+        <th>SMS Remainder</th>
         {{-- <th>Tipe Penjualan</th> --}}
         <th>Dari Gudang</th>
         {{-- <th>Layanan Angkutan</th> --}}
@@ -45,6 +47,14 @@
             </td>
             <td>{{ $sale->tanggal_so->format('d/m/Y') }}</td>
             <td>{{ $sale->tanggal_kirim->format('d/m/Y') }}</td>
+            <td>{{ $sale->tanggal_remainder->format('d/m/Y') }}</td>
+            <td>
+              @if ($sale->remainder_sent)
+                <a class="btn btn-info" href="#"><i class="fa fa-fw fa-check"></i></a>
+              @else
+                <a class="btn btn-danger" href="#"><i class="fa fa-fw fa-ban"></i></a>
+              @endif
+            </td>
             {{-- <td>{{ $sale->type->type }}</td> --}}
             <td>{{ $sale->gudang->nama }}</td>
             {{-- <td>{{ $sale->vendor->nama }}</td> --}}

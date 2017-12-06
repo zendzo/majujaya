@@ -12,6 +12,8 @@
         <th>Dipes. Oleh :</th>
         <th>Tanggal Penjualan</th>
         <th>Tanggal Pengiriman</th>
+        <th>Tanggal Remainder</th>
+        <th>SMS Remainder</th>
         
         <th>Dari Gudang</th>
         
@@ -45,6 +47,14 @@
             </td>
             <td><?php echo e($sale->tanggal_so->format('d/m/Y')); ?></td>
             <td><?php echo e($sale->tanggal_kirim->format('d/m/Y')); ?></td>
+            <td><?php echo e($sale->tanggal_remainder->format('d/m/Y')); ?></td>
+            <td>
+              <?php if($sale->remainder_sent): ?>
+                <a class="btn btn-info" href="#"><i class="fa fa-fw fa-check"></i></a>
+              <?php else: ?>
+                <a class="btn btn-danger" href="#"><i class="fa fa-fw fa-ban"></i></a>
+              <?php endif; ?>
+            </td>
             
             <td><?php echo e($sale->gudang->nama); ?></td>
             

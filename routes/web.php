@@ -194,6 +194,13 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=> 'PembayaranController@penjualan'
 	]);
 
+	// laporan
+
+	Route::get('/laporan/transaksi',[
+		'as'	=> 'laporan.transaksi.index',
+		'uses'	=>	'LaporanController@transaksiIndex'
+	]);
+
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){

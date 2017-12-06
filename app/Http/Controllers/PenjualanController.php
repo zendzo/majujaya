@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Penjualan;
 use App\PenjualanType;
 
 use App\Notifications\SendPenjualanInvoiceSmsNotification;
+use App\Notifications\RemainderPenjualanNotification;
 
 class PenjualanController extends Controller
 {
@@ -30,6 +32,23 @@ class PenjualanController extends Controller
         $page_title = "Pembayaran Penjualan";
 
         if (Auth::user()->role->id == "1") {
+            $remainder_items = Penjualan::whereRemainderSent(false)->whereTanggalRemainder(Carbon::today())->get();
+            foreach ($remainder_items as $penjualan) {
+                try {
+                        $penjualan->user->notify(new RemainderPenjualanNotification($penjualan));
+
+                        $penjualan->remainder_sent = true;
+
+                        $penjualan->save();
+
+                        \Log::info('sms sent to '.$penjualan->user->first_name.' item kode :'.$penjualan->kode);
+
+                    } catch (\Exception $e) {
+                        throw new \Exception($e, 1);
+                        
+                    }
+                }
+
             $sales = Penjualan::where('confirmed_by_admin',true)->orderBy('id','DESC')->get();
         }else{
             $sales = Penjualan::where('user_id',Auth::id())->orderBy('id','DESC')->get();

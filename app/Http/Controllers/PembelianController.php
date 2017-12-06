@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePembelian;
 use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 use App\Pembelian;
 
 use App\Notifications\SendPembelianInvoiceSmsNotification;
+use App\Notifications\RemainderPembelianNotification;
 
 
 class PembelianController extends Controller
@@ -29,6 +31,26 @@ class PembelianController extends Controller
         $page_title = "Pembayaran Pembelian";
 
         $orders = Pembelian::orderBy('id','DESC')->get();
+
+        $remainder_items = Pembelian::whereRemainderSent(false)->whereTanggalRemainder(Carbon::today())->get();
+
+        foreach ($remainder_items as $pembelian) {
+            try {
+                $pembelian->supplier->notify(new RemainderPembelianNotification($pembelian));
+
+                $pembelian->remainder_sent = true;
+
+                $pembelian->save();
+
+                \Log::info('sms sent to '.$pembelian->supplier->nama.' item kode :'.$pembelian->kode);
+
+            } catch (\Exception $e) {
+                return redirect()->route('admin.pembayaran.pembelian')
+                            ->with('message',$e->getMessage())
+                            ->with('status','Something Wrong!')
+                            ->with('type','error');
+            }
+        }
 
         return view('pembelian.pembayaran_pembelian',compact(['page_title','orders']));
     }

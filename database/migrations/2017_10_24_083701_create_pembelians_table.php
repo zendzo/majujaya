@@ -19,6 +19,8 @@ class CreatePembeliansTable extends Migration
             $table->string('kode',10);
             $table->string('pembelian_type_id');
             $table->date('tanggal_po');
+            $table->date('tanggal_remainder')->nullable();
+            $table->boolean('remainder_sent')->nullable()->default(false);
             $table->date('tanggal_kirim');
             $table->string('gudang_id');
             // $table->string('vendor_id');

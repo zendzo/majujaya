@@ -7,6 +7,13 @@ use Carbon\Carbon;
 
 class Penjualan extends Model
 {
+
+	// const REMAINDER_DATE = Carbon::now()->addDays(config('settings.remainder_days'));
+
+	// protected $attributes = [
+	// 	'tanggal_remainder'	=>	self::REMAINDER_DATE,
+	// ];
+
     protected $fillable = [
     	'user_id',
 		'kode',
@@ -21,7 +28,7 @@ class Penjualan extends Model
 		'purchased_by'
     ];
 
-    protected $dates = ['tanggal_so','tanggal_kirim'];
+    protected $dates = ['tanggal_so','tanggal_kirim','tanggal_remainder'];
 
     public function setTanggalSoAttribute($value)
 	{
