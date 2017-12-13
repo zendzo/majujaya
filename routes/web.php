@@ -201,6 +201,16 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'LaporanController@transaksiIndex'
 	]);
 
+	Route::post('/laporan/user',[
+		'as'	=> 'laporan.user',
+		'uses'	=>	'LaporanController@transaksiUser'
+	]);
+
+	Route::post('/laporan/supplier',[
+		'as'	=> 'laporan.supplier',
+		'uses'	=>	'LaporanController@transaksiSupplier'
+	]);
+
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){
