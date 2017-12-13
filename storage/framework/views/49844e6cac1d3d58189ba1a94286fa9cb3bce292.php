@@ -8,6 +8,6 @@
     <li class="<?php echo e(active(['admin.laporan.transaksi.index'])); ?>">
     	<a href="<?php echo e(route('admin.laporan.transaksi.index')); ?>"><i class="fa fa-circle-o"></i>Laporan Utama</a>
     </li>
-    <li><a href="#"><i class="fa fa-circle-o"></i>Master Data</a></li>
+    
   </ul>
 </li>

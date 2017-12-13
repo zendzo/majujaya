@@ -1,3 +1,25 @@
+<?php $__env->startSection('jsPlugins'); ?>
+<script>
+  function printPage() {
+      var css = '@page  { size: landscape; }',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+
+      style.type = 'text/css';
+      style.media = 'print';
+
+      if (style.styleSheet){
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+
+      head.appendChild(style);
+    window.print();
+  }
+</script>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 <div class="row">
     <!-- Main content -->
@@ -119,7 +141,7 @@
       <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-xs-12">
-          <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+        	<button onclick="printPage()" href="#" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
           </button>
         </div>
       </div>
