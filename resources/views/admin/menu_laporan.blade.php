@@ -8,6 +8,6 @@
     <li class="{{ active(['admin.laporan.transaksi.index']) }}">
     	<a href="{{ route('admin.laporan.transaksi.index') }}"><i class="fa fa-circle-o"></i>Laporan Utama</a>
     </li>
-    <li><a href="#"><i class="fa fa-circle-o"></i>Master Data</a></li>
+    {{-- <li><a href="#"><i class="fa fa-circle-o"></i>Master Data</a></li> --}}
   </ul>
 </li>
