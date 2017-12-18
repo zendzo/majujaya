@@ -61,7 +61,11 @@ class RemainderDaysContoller extends Controller
      */
     public function edit($id)
     {
-        //
+        $remainder_days = RemainderDay::findOrFail($id);
+
+        $page_title = "Edit Hari SMS ";
+
+        return view('remainder_days.edit',compact(['remainder_days','page_title']));
     }
 
     /**
@@ -73,7 +77,14 @@ class RemainderDaysContoller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $remainder_days = RemainderDay::findOrFail($id);
+
+        $remainder_days->update($request->all());
+
+        return redirect()->route('admin.remainder-days.index')
+                        ->with('message',"Data Telah Diupdate!")
+                        ->with('status','success')
+                        ->with('type','success');
     }
 
     /**
