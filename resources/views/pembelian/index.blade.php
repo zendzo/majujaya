@@ -95,6 +95,7 @@
 
             <div class="col-sm-10">
               <input name="tanggal_po" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="{{ Date('m/d/Y') }}">
+              <input type="text" name="tanggal_remainder" hidden="" value="{{ Date('d/m/Y') }}">
             </div>
           </div>
 

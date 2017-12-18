@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\RemainderDay;
 
 class Penjualan extends Model
 {
@@ -20,6 +21,7 @@ class Penjualan extends Model
 		'penjualan_type_id',
 		'tanggal_so',
 		'tanggal_kirim',
+		'tanggal_remainder',
 		'gudang_id',
 		// 'vendor_id',
 		'keterangan',
@@ -38,6 +40,14 @@ class Penjualan extends Model
 	public function setTanggalKirimAttribute($value)
 	{
 		$this->attributes['tanggal_kirim'] = Carbon::createFromFormat('d/m/Y',$value)->toDateString();
+	}
+
+	public function setTanggalRemainderAttribute($value)
+	{
+		$remainder_days = RemainderDay::select('max_days')->first();
+
+		$this->attributes['tanggal_remainder'] = Carbon::createFromFormat('d/m/Y',$value)
+														->addDays($remainder_days->max_days);
 	}
 
 	public function user()

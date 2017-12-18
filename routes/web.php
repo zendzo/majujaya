@@ -211,6 +211,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'], function(
 		'uses'	=>	'LaporanController@transaksiSupplier'
 	]);
 
+	Route::resource('remainder-days','RemainderDaysContoller');
+
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){

@@ -94,6 +94,7 @@
 
             <div class="col-sm-10">
               <input name="tanggal_po" type="text" class="form-control pull-right" id="datepicker" required="" placeholder="<?php echo e(Date('m/d/Y')); ?>">
+              <input type="text" name="tanggal_remainder" hidden="" value="<?php echo e(Date('d/m/Y')); ?>">
             </div>
           </div>
 
