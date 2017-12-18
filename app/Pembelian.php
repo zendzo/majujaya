@@ -39,7 +39,7 @@ class Pembelian extends Model
 	{
 		$remainder_days = RemainderDay::select('max_days')->first();
 
-		$this->attributes['tanggal_remainder'] = Carbon::createFromFormat('d/m/Y',$value)
+		$this->attributes['tanggal_remainder'] = Carbon::now()
 														->addDays($remainder_days->max_days);
 	}
 
