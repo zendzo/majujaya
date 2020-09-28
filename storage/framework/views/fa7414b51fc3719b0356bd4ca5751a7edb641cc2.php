@@ -137,7 +137,7 @@
         </div>
         <!-- /.col -->
       </div>
-  </div>
+  </div>	
       <!-- /.row -->
       <!-- this row will not appear when printing -->
       <div class="row no-print">
