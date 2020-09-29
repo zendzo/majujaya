@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\User;
-
+use App\RemainderDay;
 use Carbon\Carbon;
 use Faker\Factory;
 
@@ -16,6 +16,8 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
+		RemainderDay::create(['max_days' => 5]);
+
         $user = new User;
 
         for ($i=0; $i < 1; $i++) { 

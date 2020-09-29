@@ -13,16 +13,16 @@ class CreateVendorsTable extends Migration
      */
     public function up()
     {
-        // Schema::create('vendors', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('nama');
-        //     $table->string('alamat');
-        //     $table->string('phone');
-        //     $table->string('npwp')->nullable();
-        //     $table->boolean('status')->default(true);
-        //     $table->string('keterangan')->nullable();
-        //     $table->timestamps();
-        // });
+         Schema::create('vendors', function (Blueprint $table) {
+             $table->increments('id');
+            $table->string('nama');
+            $table->string('alamat');
+            $table->string('phone');
+            $table->string('npwp')->nullable();
+            $table->boolean('status')->default(true);
+            $table->string('keterangan')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
